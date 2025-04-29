@@ -1,0 +1,9 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+    <!-- ფარის ფონი -->
+    <path d="M30 20 C30 10, 50 10, 50 20 V60 C50 70, 30 70, 30 60 V20 Z" fill="#2c3e50"/>
+    <!-- კამერის ლინზა ფარში -->
+    <circle cx="40" cy="40" r="10" fill="none" stroke="#e74c3c" stroke-width="2"/>
+    <circle cx="40" cy="40" r="4" fill="#e74c3c"/>
+    <!-- ტექსტი -->
+    <text x="60" y="50" font-family="Roboto, sans-serif" font-size="20" font-weight="bold" fill="#ecf0f1">CamDefenderSys</text>
+</svg>

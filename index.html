@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamDefenderSys | უსაფრთხოების სისტემები</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Noto Sans Georgian', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+        }
+
+        /* ენის შერჩევის მენიუ */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            display: none;
+            width: 150px;
+        }
+
+        .language-dropdown.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .language-option {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-option:hover {
+            background: #f5f5f5;
+        }
+
+        /* ჰედერი */
+        header {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 900px;
+            padding: 0 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* ნავიგაცია */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.9);
+            z-index: 999;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            background: rgba(26, 37, 47, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* მთავარი კონტენტი */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* სერვისების სექცია */
+        .services {
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') fixed;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+
+        .services:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.9);
+        }
+
+        .services .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-desc {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .learn-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .learn-more:hover {
+            color: white;
+            gap: 8px;
+        }
+
+        /* ჩვენს შესახებ */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* კონტაქტი */
+        .contact {
+            background: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') fixed;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 37, 47, 0.9);
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        /* ფუტერი */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* ანიმაციები */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+        }
+
+        .slide-up {
+            transform: translateY(50px);
+        }
+
+        .slide-up.show {
+            transform: translateY(0);
+        }
+
+        /* Lightbox სტილები */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-lightbox:hover {
+            color: var(--accent);
+        }
+
+        /* რესპონსივობა */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .slogan {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-text, .about-image {
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .slogan {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ენის შერჩევა -->
+    <div class="language-switcher">
+        <button class="language-btn" id="languageBtn">
+            <i class="fas fa-globe"></i>
+            <span>ქართული</span>
+        </button>
+        <div class="language-dropdown" id="languageDropdown">
+            <div class="language-option" data-lang="ka">
+                <span>🇬🇪</span>
+                <span>ქართული</span>
+            </div>
+            <div class="language-option" data-lang="en">
+                <span>🇬🇧</span>
+                <span>English</span>
+            </div>
+            <div class="language-option" data-lang="ru">
+                <span>🇷🇺</span>
+                <span>Русский</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ნავიგაცია -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <img src="logo.svg" alt="CamDefenderSys Logo" class="nav-logo">
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">მთავარი</a></li>
+                <li><a href="#services">სერვისები</a></li>
+                <li><a href="#about">ჩვენ შესახებ</a></li>
+                <li><a href="#contact">კონტაქტი</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ჰედერი -->
+    <header id="home">
+        <div class="header-content">
+            <img src="logo.svg" alt="CamDefenderSys Logo" class="logo">
+            <h1>CamDefenderSys</h1>
+            <p class="slogan">თქვენი უსაფრთხოება — ჩვენი პრიორიტეტია</p>
+            <a href="#services" class="btn">სერვისების ნახვა</a>
+        </div>
+    </header>
+
+    <!-- სერვისები -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">ჩვენი სერვისები</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in slide-up">
+                    <div class="service-icon">📹</div>
+                    <h3 class="service-title">CCTV კამერები</h3>
+                    <p class="service-desc">მაღალი გარჩევადობის CCTV კამერების დაყენება და კონფიგურაცია თქვენი უსაფრთხოებისთვის.</p>
+                    <a href="cctv.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card fade-in slide-up" style="transition-delay: 0.2s;">
+                    <div class="service-icon">🚨</div>
+                    <h3 class="service-title">სიგნალიზაცია</h3>
+                    <p class="service-desc">მოძრაობის, მსხვრევის და შეღწევის დეტექტორები თქვენი ობიექტის სრული დაცვისთვის.</p>
+                    <a href="alarm.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card fade-in slide-up" style="transition-delay: 0.4s;">
+                    <div class="service-icon">🔥</div>
+                    <h3 class="service-title">სახანძრო სისტემები</h3>
+                    <p class="service-desc">კვამლის და ტემპერატურის დეტექტორები, ავტომატური სახანძრო სისტემები.</p>
+                    <a href="fire.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card fade-in slide-up" style="transition-delay: 0.6s;">
+                    <div class="service-icon">🚪</div>
+                    <h3 class="service-title">ელექტრო საკეტები</h3>
+                    <p class="service-desc">მოწინავე ელექტრონული საკეტების სისტემები კარგად დაცული წვდომისთვის.</p>
+                    <a href="locks.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card fade-in slide-up" style="transition-delay: 0.8s;">
+                    <div class="service-icon">🚗</div>
+                    <h3 class="service-title">შლაგბაუმები</h3>
+                    <p class="service-desc">ავტომატური შლაგბაუმები პარკინგების და ტერიტორიების კონტროლირებადი წვდომისთვის.</p>
+                    <a href="barriers.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card fade-in slide-up" style="transition-delay: 1s;">
+                    <div class="service-icon">🚶‍♂️</div>
+                    <h3 class="service-title">ტურნიკეტები</h3>
+                    <p class="service-desc">ადამიანების ნაკადის კონტროლის სისტემები ბიზნეს ცენტრებისა და საჯარო ადგილებისთვის.</p>
+                    <a href="turnstiles.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ჩვენს შესახებ -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">ჩვენ შესახებ</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>CamDefenderSys არის ლიდერი უსაფრთხოების სისტემების ინსტალაციასა და მომსახურებაში. ჩვენი კომპანია მუშაობს 2010 წლიდან და დღეს ჩვენ გვაქვს 1000-ზე მეტი კმაყოფილი კლიენტი მთელი ქვეყნის მასშტაბით.</p>
+                    <p>ჩვენი გუნდი შედგება მაღალკვალიფიციური სპეციალისტებისგან, რომლებიც მუდმივად ახდენენ თანამედროვე ტექნოლოგიების მონიტორინგს და განახლებას, რათა მოგაწოდოთ საუკეთესო გადაწყვეტილებები უსაფრთხოების სფეროში.</p>
+                    <p>ჩვენ ვმუშაობთ როგორც სახლების, ასევე ბიზნეს ობიექტებისთვის, უზრუნველყოფთ ინდივიდუალურ მიდგომას და სრულ მომსახურებას სისტემების დაყენებიდან მათი მომსახურებამდე.</p>
+                </div>
+                <div class="about-image fade-in slide-up">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="CamDefenderSys Team" class="lightbox-trigger" data-src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- კონტაქტი -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">კონტაქტი</h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>დაგვიკავშირდით</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>მთელი საქართველოს მასშტაბით</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span>+995 577 97 27 58</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span>+995 595 70 83 00</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>camdefendersys@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <span>ორშ-კვირა: 9:00 - 18:00</span>
+                    </div>
+                </div>
+                
+                <div class="contact-info fade-in slide-up" style="transition-delay: 0.2s;">
+                    <h3>დატოვე შეტყობინება</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="თქვენი სახელი" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="თქვენი ელ. ფოსტა" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="თქვენი შეტყობინება" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">გაგზავნა</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ფუტერი -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CamDefenderSys</h3>
+                    <p>თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>სერვისები</h3>
+                    <ul class="footer-links">
+                        <li><a href="cctv.html">CCTV კამერები</a></li>
+                        <li><a href="alarm.html">სიგნალიზაცია</a></li>
+                        <li><a href="fire.html">სახანძრო სისტემები</a></li>
+                        <li><a href="locks.html">ელექტრო საკეტები</a></li>
+                        <li><a href="barriers.html">შლაგბაუმები</a></li>
+                        <li><a href="turnstiles.html">ტურნიკეტები</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>სწრაფი ბმულები</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">მთავარი</a></li>
+                        <li><a href="#services">სერვისები</a></li>
+                        <li><a href="#about">ჩვენ შესახებ</a></li>
+                        <li><a href="#contact">კონტაქტი</a></li>
+                        <li><a href="#">ბლოგი</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox" id="closeLightbox">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Lightbox Image">
+        </div>
+    </div>
+
+    <script>
+        // ენის შერჩევის ფუნქციონალი
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+
+        languageBtn.addEventListener('click', () => {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // დოკუმენტზე დაჭერისას დროპდაუნის დახურვა
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-switcher')) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // ენის ცვლილება
+        const languageOptions = document.querySelectorAll('.language-option');
+        languageOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                // აქ დაემატება ენის ცვლილების ლოგიკა
+                languageBtn.querySelector('span').textContent = option.querySelector('span:last-child').textContent;
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        // მობილური მენიუ
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // სკროლის ეფექტები
+        window.addEventListener('scroll', () => {
+            // ნავიგაციის ეფექტი
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // fade-in ეფექტები
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('show');
+                }
+            });
+
+            // slide-up ეფექტები
+            const slideElements = document.querySelectorAll('.slide-up');
+            slideElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('show');
+                }
+            });
+        });
+
+        // Lightbox ფუნქციონალი
+        const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const closeLightbox = document.getElementById('closeLightbox');
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const imgSrc = trigger.getAttribute('data-src');
+                lightboxImage.src = imgSrc;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeLightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // ფორმის გაგზავნა
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('თქვენი შეტყობინება გაგზავნილია! ჩვენი თანამშრომელი დაგიკავშირდებათ მოკლე დროში.');
+            contactForm.reset();
+        });
+
+        // ინიციალიზაციისას გამოჩენა ელემენტებისთვის, რომლებიც უკვე ხილვადია
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const slideElements = document.querySelectorAll('.slide-up');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('show');
+                }
+            });
+            
+            slideElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

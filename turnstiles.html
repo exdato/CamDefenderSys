@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ტურნიკეტები და დაშვების სისტემები | CamDefenderSys</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Noto Sans Georgian', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+        }
+
+        /* ენის შერჩევის მენიუ */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            display: none;
+            width: 150px;
+        }
+
+        .language-dropdown.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .language-option {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-option:hover {
+            background: #f5f5f5;
+        }
+
+        /* ჰედერი */
+        header {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1519750157634-b6d493a0f77c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slogan {
+            font-size: 1.3rem;
+            font-weight: 300;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* ნავიგაცია */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.9);
+            z-index: 999;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            background: rgba(26, 37, 47, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* მთავარი კონტენტი */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* ტურნიკეტების სექცია */
+        .turnstiles-details {
+            background: white;
+        }
+
+        .turnstiles-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .turnstiles-text {
+            flex: 1;
+        }
+
+        .turnstiles-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .turnstiles-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .turnstiles-features {
+            margin-top: 30px;
+        }
+
+        .turnstiles-features h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .turnstiles-features ul {
+            list-style: none;
+        }
+
+        .turnstiles-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .turnstiles-features i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* კონტაქტი */
+        .contact {
+            background: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') fixed;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 37, 47, 0.9);
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        /* ფორმის სტილები */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* ფუტერი */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* ანიმაციები */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* რესპონსივობა */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .slogan {
+                font-size: 1.1rem;
+            }
+
+            .turnstiles-content {
+                flex-direction: column;
+            }
+
+            .turnstiles-text, .turnstiles-image {
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .slogan {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ენის შერჩევა -->
+    <div class="language-switcher">
+        <button class="language-btn" id="languageBtn">
+            <i class="fas fa-globe"></i>
+            <span data-i18n="language">ქართული</span>
+        </button>
+        <div class="language-dropdown" id="languageDropdown">
+            <div class="language-option" data-lang="ka">
+                <span>🇬🇪</span>
+                <span>ქართული</span>
+            </div>
+            <div class="language-option" data-lang="en">
+                <span>🇬🇧</span>
+                <span>English</span>
+            </div>
+            <div class="language-option" data-lang="ru">
+                <span>🇷🇺</span>
+                <span>Русский</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ნავიგაცია -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <img src="logo.svg" alt="CamDefenderSys Logo" class="nav-logo">
+            <button class="burger" id="burger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" data-i18n="nav-home">მთავარი</a></li>
+                <li><a href="index.html#services" data-i18n="nav-services">სერვისები</a></li>
+                <li><a href="index.html#about" data-i18n="nav-about">ჩვენ შესახებ</a></li>
+                <li><a href="index.html#contact" data-i18n="nav-contact">კონტაქტი</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ჰედერი -->
+    <header>
+        <div class="header-content">
+            <img src="logo.svg" alt="CamDefenderSys Logo" class="logo">
+            <h1 data-i18n="header-title">ტურნიკეტები და დაშვების სისტემები</h1>
+            <p class="slogan" data-i18n="header-slogan">უსაფრთხო და ეფექტური წვდომის კონტროლი</p>
+        </div>
+    </header>
+
+    <!-- ტურნიკეტებისა და დაშვების სისტემების დეტალები -->
+    <section class="turnstiles-details" id="turnstiles">
+        <div class="container">
+            <h2 class="section-title" data-i18n="turnstiles-title">ტურნიკეტებისა და დაშვების სისტემების მიმოხილვა</h2>
+            <div class="turnstiles-content">
+                <div class="turnstiles-text">
+                    <p data-i18n="turnstiles-text-1">CamDefenderSys გთავაზობთ ტურნიკეტებსა და დაშვების სისტემებს, რომლებიც უზრუნველყოფენ უსაფრთხო, ეფექტურ და კონტროლირებად წვდომას სხვადასხვა ობიექტებზე. ჩვენი გადაწყვეტილებები მორგებულია თანამედროვე უსაფრთხოების მოთხოვნებზე, გამძლეობასა და მოქნილ ინტეგრაციაზე.</p>
+                    <p data-i18n="turnstiles-text-2">ჩვენი ტურნიკეტები მოიცავს სამფეხა (კომპაქტური ოფისებისთვის), სრულსიმაღლოვან (მაღალი უსაფრთხოებისთვის), ოპტიკურ (ელეგანტური ოფისებისთვის), და სვინგ-ტიპის (შეზღუდული შესაძლებლობების მქონე პირებისთვის) მოდელებს. დაშვების სისტემები მხარს უჭერს ბიომეტრიულ იდენტიფიკაციას (თითის ანაბეჭდი, სახის ამოცნობა), RFID, QR კოდებს, და ბილეთების სკანირებას. ეს სისტემები გამოიყენება ოფისებში თანამშრომელთა მართვისთვის, სტადიონებზე ბრბოს კონტროლისთვის, მეტროში მგზავრთა ნაკადისთვის, და ქარხნებში უსაფრთხოების უზრუნველსაყოფად. ჩვენი გადაწყვეტილებები ინტეგრირდება CCTV-სთან, სმარტფონის მართვასთან, და მონაცემთა ანალიტიკასთან, რაც საშუალებას იძლევა ვიზიტორთა თვალყურის დევნება და ანგარიშგება.</p>
+                    <div class="turnstiles-features">
+                        <h3 data-i18n="turnstiles-features-title">ჩვენი ტურნიკეტებისა და დაშვების სისტემების უპირატესობები</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i><span data-i18n="turnstiles-feature-1">ბიომეტრიული იდენტიფიკაცია მაღალი უსაფრთხოებისთვის</span></li>
+                            <li><i class="fas fa-check-circle"></i><span data-i18n="turnstiles-feature-2">სამფეხა ტურნიკეტები სივრცის დაზოგვისთვის</span></li>
+                            <li><i class="fas fa-check-circle"></i><span data-i18n="turnstiles-feature-3">RFID და QR კოდები სწრაფი წვდომისთვის</span></li>
+                            <li><i class="fas fa-check-circle"></i><span data-i18n="turnstiles-feature-4">CCTV ინტეგრაცია გაძლიერებული მონიტორინგისთვის</span></li>
+                            <li><i class="fas fa-check-circle"></i><span data-i18n="turnstiles-feature-5">მონაცემთა ანალიტიკა ვიზიტორთა მართვისთვის</span></li>
+                            <li><i class="fas fa-check-circle"></i><span data-i18n="turnstiles-feature-6">გამძლე დიზაინი ნებისმიერი გარემოსთვის</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="turnstiles-image">
+                    <img src="https://images.unsplash.com/photo-1519750157634-b6d493a0f77c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Turnstile and Access System">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- კონტაქტი -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact-title">კონტაქტი</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 data-i18n="contact-info-title">დაგვიკავშირდით</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span data-i18n="contact-address">თბილისი, ქავთარაძის ქ. #12</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span>+995 555 12 34 56</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>info@camdefendersys.ge</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <span data-i18n="contact-hours">ორშ-კვირა: 9:00 - 18:00</span>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h3 data-i18n="contact-form-title">დატოვე შეტყობინება</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="თქვენი სახელი" data-i18n-placeholder="form-name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="თქვენი ელ. ფოსტა" data-i18n-placeholder="form-email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="თქვენი შეტყობინება" data-i18n-placeholder="form-message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-i18n="form-submit">გაგზავნა</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ფუტერი -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-i18n="footer-title">CamDefenderSys</h3>
+                    <p data-i18n="footer-desc">თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-i18n="footer-services-title">სერვისები</h3>
+                    <ul class="footer-links">
+                        <li><a href="cctv.html" data-i18n="service-cctv-title">CCTV კამერები</a></li>
+                        <li><a href="alarm.html" data-i18n="service-alarm-title">სიგნალიზაცია</a></li>
+                        <li><a href="fire.html" data-i18n="service-fire-title">სახანძრო სისტემები</a></li>
+                        <li><a href="locks.html" data-i18n="service-locks-title">ელექტრო საკეტები</a></li>
+                        <li><a href="barriers.html" data-i18n="service-barriers-title">შლაგბაუმები</a></li>
+                        <li><a href="turnstiles.html" data-i18n="service-turnstiles-title">ტურნიკეტები</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-i18n="footer-links-title">სწრაფი ბმულები</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" data-i18n="nav-home">მთავარი</a></li>
+                        <li><a href="index.html#services" data-i18n="nav-services">სერვისები</a></li>
+                        <li><a href="index.html#about" data-i18n="nav-about">ჩვენ შესახებ</a></li>
+                        <li><a href="index.html#contact" data-i18n="nav-contact">კონტაქტი</a></li>
+                        <li><a href="#" data-i18n="footer-prices">ფასები</a></li>
+                        <li><a href="#" data-i18n="footer-blog">ბლოგი</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p data-i18n="footer-copyright">© 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // თარგმანის მონაცემები
+        const translations = {
+            ka: {
+                language: "ქართული",
+                "nav-home": "მთავარი",
+                "nav-services": "სერვისები",
+                "nav-about": "ჩვენ შესახებ",
+                "nav-contact": "კონტაქტი",
+                "header-title": "ტურნიკეტები და დაშვების სისტემები",
+                "header-slogan": "უსაფრთხო და ეფექტური წვდომის კონტროლი",
+                "turnstiles-title": "ტურნიკეტებისა და დაშვების სისტემების მიმოხილვა",
+                "turnstiles-text-1": "CamDefenderSys გთავაზობთ ტურნიკეტებსა და დაშვების სისტემებს, რომლებიც უზრუნველყოფენ უსაფრთხო, ეფექტურ და კონტროლირებად წვდომას სხვადასხვა ობიექტებზე. ჩვენი გადაწყვეტილებები მორგებულია თანამედროვე უსაფრთხოების მოთხოვნებზე, გამძლეობასა და მოქნილ ინტეგრაციაზე.",
+                "turnstiles-text-2": "ჩვენი ტურნიკეტები მოიცავს სამფეხა (კომპაქტური ოფისებისთვის), სრულსიმაღლოვან (მაღალი უსაფრთხოებისთვის), ოპტიკურ (ელეგანტური ოფისებისთვის), და სვინგ-ტიპის (შეზღუდული შესაძლებლობების მქონე პირებისთვის) მოდელებს. დაშვების სისტემები მხარს უჭერს ბიომეტრიულ იდენტიფიკაციას (თითის ანაბეჭდი, სახის ამოცნობა), RFID, QR კოდებს, და ბილეთების სკანირებას. ეს სისტემები გამოიყენება ოფისებში თანამშრომელთა მართვისთვის, სტადიონებზე ბრბოს კონტროლისთვის, მეტროში მგზავრთა ნაკადისთვის, და ქარხნებში უსაფრთხოების უზრუნველსაყოფად. ჩვენი გადაწყვეტილებები ინტეგრირდება CCTV-სთან, სმარტფონის მართვასთან, და მონაცემთა ანალიტიკასთან, რაც საშუალებას იძლევა ვიზიტორთა თვალყურის დევნება და ანგარიშგება.",
+                "turnstiles-features-title": "ჩვენი ტურნიკეტებისა და დაშვების სისტემების უპირატესობები",
+                "turnstiles-feature-1": "ბიომეტრიული იდენტიფიკაცია მაღალი უსაფრთხოებისთვის",
+                "turnstiles-feature-2": "სამფეხა ტურნიკეტები სივრცის დაზოგვისთვის",
+                "turnstiles-feature-3": "RFID და QR კოდები სწრაფი წვდომისთვის",
+                "turnstiles-feature-4": "CCTV ინტეგრაცია გაძლიერებული მონიტორინგისთვის",
+                "turnstiles-feature-5": "მონაცემთა ანალიტიკა ვიზიტორთა მართვისთვის",
+                "turnstiles-feature-6": "გამძლე დიზაინი ნებისმიერი გარემოსთვის",
+                "contact-title": "კონტაქტი",
+                "contact-info-title": "დაგვიკავშირდით",
+                "contact-address": "თბილისი, ქავთარაძის ქ. #12",
+                "contact-hours": "ორშ-კვირა: 9:00 - 18:00",
+                "contact-form-title": "დატოვე შეტყობინება",
+                "form-name": "თქვენი სახელი",
+                "form-email": "თქვენი ელ. ფოსტა",
+                "form-message": "თქვენი შეტყობინება",
+                "form-submit": "გაგზავნა",
+                "footer-title": "CamDefenderSys",
+                "footer-desc": "თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.",
+                "footer-services-title": "სერვისები",
+                "footer-links-title": "სწრაფი ბმულები",
+                "footer-prices": "ფასები",
+                "footer-blog": "ბლოგი",
+                "footer-copyright": "© 2023 CamDefenderSys. ყველა უფლება დაცულია.",
+                "service-cctv-title": "CCTV კამერები",
+                "service-alarm-title": "სიგნალიზაცია",
+                "service-fire-title": "სახანძრო სისტემები",
+                "service-locks-title": "ელექტრო საკეტები",
+                "service-barriers-title": "შლაგბაუმები",
+                "service-turnstiles-title": "ტურნიკეტები"
+            },
+            en: {
+                language: "English",
+                "nav-home": "Home",
+                "nav-services": "Services",
+                "nav-about": "About Us",
+                "nav-contact": "Contact",
+                "header-title": "Turnstiles and Access Control Systems",
+                "header-slogan": "Secure and Efficient Access Control",
+                "turnstiles-title": "Turnstiles and Access Systems Overview",
+                "turnstiles-text-1": "CamDefenderSys offers turnstiles and access control systems that provide secure, efficient, and controlled access to various facilities. Our solutions are tailored to modern security requirements, durability, and flexible integration.",
+                "turnstiles-text-2": "Our turnstiles include tripod (compact for offices), full-height (for high security), optical (sleek for modern offices), and swing-type (for accessibility) models. Access control systems support biometric identification (fingerprint, facial recognition), RFID, QR codes, and ticket scanning. These systems are used in offices for employee management, stadiums for crowd control, metro stations for passenger flow, and factories for security. Our solutions integrate with CCTV, smartphone control, and data analytics, enabling visitor tracking and reporting.",
+                "turnstiles-features-title": "Advantages of Our Turnstiles and Access Systems",
+                "turnstiles-feature-1": "Biometric identification for high security",
+                "turnstiles-feature-2": "Tripod turnstiles for space-saving",
+                "turnstiles-feature-3": "RFID and QR codes for quick access",
+                "turnstiles-feature-4": "CCTV integration for enhanced monitoring",
+                "turnstiles-feature-5": "Data analytics for visitor management",
+                "turnstiles-feature-6": "Durable design for any environment",
+                "contact-title": "Contact",
+                "contact-info-title": "Get in Touch",
+                "contact-address": "Tbilisi, Kavtaradze St. #12",
+                "contact-hours": "Mon-Sun: 9:00 - 18:00",
+                "contact-form-title": "Leave a Message",
+                "form-name": "Your Name",
+                "form-email": "Your Email",
+                "form-message": "Your Message",
+                "form-submit": "Send",
+                "footer-title": "CamDefenderSys",
+                "footer-desc": "Leading security solutions provider in Georgia.",
+                "footer-services-title": "Services",
+                "footer-links-title": "Quick Links",
+                "footer-prices": "Prices",
+                "footer-blog": "Blog",
+                "footer-copyright": "© 2023 CamDefenderSys. All rights reserved.",
+                "service-cctv-title": "CCTV Cameras",
+                "service-alarm-title": "Alarm Systems",
+                "service-fire-title": "Fire Systems",
+                "service-locks-title": "Electronic Locks",
+                "service-barriers-title": "Barriers",
+                "service-turnstiles-title": "Turnstiles"
+            },
+            ru: {
+                language: "Русский",
+                "nav-home": "Главная",
+                "nav-services": "Услуги",
+                "nav-about": "О нас",
+                "nav-contact": "Контакты",
+                "header-title": "Турникеты и системы контроля доступа",
+                "header-slogan": "Безопасный и эффективный контроль доступа",
+                "turnstiles-title": "Обзор турникетов и систем доступа",
+                "turnstiles-text-1": "CamDefenderSys предлагает турникеты и системы контроля доступа, которые обеспечивают безопасный, эффективный и контролируемый доступ к различным объектам. Наши решения адаптированы к современным требованиям безопасности, долговечности и гибкой интеграции.",
+                "turnstiles-text-2": "Наши турникеты включают треножные (компактные для офисов), полноростовые (для высокой безопасности), оптические (элегантные для современных офисов) и распашные (для людей с ограниченными возможностями) модели. Системы контроля доступа поддерживают биометрическую идентификацию (отпечатки пальцев, распознавание лиц), RFID, QR-коды и сканирование билетов. Эти системы используются в офисах для управления сотрудниками, на стадионах для контроля толпы, в метро для управления пассажиропотоком и на заводах для обеспечения безопасности. Наши решения интегрируются с CCTV, управлением через смартфон и аналитикой данных, что позволяет отслеживать посетителей и составлять отчеты.",
+                "turnstiles-features-title": "Преимущества наших турникетов и систем доступа",
+                "turnstiles-feature-1": "Биометрическая идентификация для высокой безопасности",
+                "turnstiles-feature-2": "Треножные турникеты для экономии пространства",
+                "turnstiles-feature-3": "RFID и QR-коды для быстрого доступа",
+                "turnstiles-feature-4": "Интеграция с CCTV для усиленного мониторинга",
+                "turnstiles-feature-5": "Аналитика данных для управления посетителями",
+                "turnstiles-feature-6": "Прочный дизайн для любых условий",
+                "contact-title": "Контакты",
+                "contact-info-title": "Свяжитесь с нами",
+                "contact-address": "Тбилиси, ул. Кавтарадзе, 12",
+                "contact-hours": "Пн-Вс: 9:00 - 18:00",
+                "contact-form-title": "Оставьте сообщение",
+                "form-name": "Ваше имя",
+                "form-email": "Ваш email",
+                "form-message": "Ваше сообщение",
+                "form-submit": "Отправить",
+                "footer-title": "CamDefenderSys",
+                "footer-desc": "Ведущий поставщик решений безопасности в Грузии.",
+                "footer-services-title": "Услуги",
+                "footer-links-title": "Быстрые ссылки",
+                "footer-prices": "Цены",
+                "footer-blog": "Блог",
+                "footer-copyright": "© 2023 CamDefenderSys. Все права защищены.",
+                "service-cctv-title": "Камеры видеонаблюдения",
+                "service-alarm-title": "Сигнализация",
+                "service-fire-title": "Пожарные системы",
+                "service-locks-title": "Электронные замки",
+                "service-barriers-title": "Шлагбаумы",
+                "service-turnstiles-title": "Турникеты"
+            }
+        };
+
+        // ენის გადართვის ფუნქცია
+        function setLanguage(lang) {
+            try {
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                    const key = element.getAttribute('data-i18n-placeholder');
+                    if (translations[lang][key]) {
+                        element.placeholder = translations[lang][key];
+                    }
+                });
+
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+
+                const languageBtn = document.getElementById('languageBtn');
+                languageBtn.querySelector('span').textContent = translations[lang].language;
+            } catch (error) {
+                console.error('Error in setLanguage:', error);
+            }
+        }
+
+        // ნაგულისხმევი ენის დაყენება
+        const savedLang = localStorage.getItem('language') || 'ka';
+        setLanguage(savedLang);
+
+        // ენის შერჩევის ფუნქციონალი
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+
+        languageBtn.addEventListener('click', () => {
+            languageDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-switcher')) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        const languageOptions = document.querySelectorAll('.language-option');
+        languageOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                setLanguage(lang);
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        // მობილური მენიუ
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('navLinks');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // ნავიგაციის სკროლის ეფექტი
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ფორმის გაგზავნა
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const currentLang = localStorage.getItem('language') || 'ka';
+            const message = currentLang === 'ka' ? 
+                'თქვენი შეტყობინება გაგზავნილია! ჩვენი თანამშრომელი დაგიკავშირდებათ მოკლე დროში.' :
+                currentLang === 'en' ? 
+                'Your message has been sent! Our representative will contact you shortly.' :
+                'Ваше сообщение отправлено! Наш сотрудник свяжется с вами в ближайшее время.';
+            alert(message);
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
