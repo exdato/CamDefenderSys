@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CamDefenderSys | უსაფრთხოების სისტემები</title>
+    <title data-i18n="page_title">CamDefenderSys | უსაფრთხოების სისტემები</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -655,7 +655,7 @@
     <div class="language-switcher">
         <button class="language-btn" id="languageBtn">
             <i class="fas fa-globe"></i>
-            <span>ქართული</span>
+            <span data-i18n="language">ქართული</span>
         </button>
         <div class="language-dropdown" id="languageDropdown">
             <div class="language-option" data-lang="ka">
@@ -681,10 +681,10 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">მთავარი</a></li>
-                <li><a href="#services">სერვისები</a></li>
-                <li><a href="#about">ჩვენ შესახებ</a></li>
-                <li><a href="#contact">კონტაქტი</a></li>
+                <li><a href="#home" class="active" data-i18n="nav-home">მთავარი</a></li>
+                <li><a href="#services" data-i18n="nav-services">სერვისები</a></li>
+                <li><a href="#about" data-i18n="nav-about">ჩვენ შესახებ</a></li>
+                <li><a href="#contact" data-i18n="nav-contact">კონტაქტი</a></li>
             </ul>
         </div>
     </nav>
@@ -693,57 +693,57 @@
     <header id="home">
         <div class="header-content">
             <img src="logo.svg" alt="CamDefenderSys Logo" class="logo">
-            <h1>CamDefenderSys</h1>
-            <p class="slogan">თქვენი უსაფრთხოება — ჩვენი პრიორიტეტია</p>
-            <a href="#services" class="btn">სერვისების ნახვა</a>
+            <h1 data-i18n="hero_title">CamDefenderSys</h1>
+            <p class="slogan" data-i18n="hero_slogan">თქვენი უსაფრთხოება — ჩვენი პრიორიტეტია</p>
+            <a href="#services" class="btn" data-i18n="hero_cta">სერვისების ნახვა</a>
         </div>
     </header>
 
     <!-- სერვისები -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title fade-in">ჩვენი სერვისები</h2>
+            <h2 class="section-title fade-in" data-i18n="services_title">ჩვენი სერვისები</h2>
             <div class="services-grid">
                 <div class="service-card fade-in slide-up">
                     <div class="service-icon">📹</div>
-                    <h3 class="service-title">CCTV კამერები</h3>
-                    <p class="service-desc">მაღალი გარჩევადობის CCTV კამერების დაყენება და კონფიგურაცია თქვენი უსაფრთხოებისთვის.</p>
-                    <a href="cctv.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="service-title" data-i18n="service_cctv">CCTV კამერები</h3>
+                    <p class="service-desc" data-i18n="service_cctv_desc">მაღალი გარჩევადობის CCTV კამერების დაყენება და კონფიგურაცია თქვენი უსაფრთხოებისთვის.</p>
+                    <a href="cctv.html" class="learn-more" data-i18n="learn_more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="service-card fade-in slide-up" style="transition-delay: 0.2s;">
                     <div class="service-icon">🚨</div>
-                    <h3 class="service-title">სიგნალიზაცია</h3>
-                    <p class="service-desc">მოძრაობის, მსხვრევის და შეღწევის დეტექტორები თქვენი ობიექტის სრული დაცვისთვის.</p>
-                    <a href="alarm.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="service-title" data-i18n="service_alarm">სიგნალიზაცია</h3>
+                    <p class="service-desc" data-i18n="service_alarm_desc">მოძრაობის, მსხვრევის და შეღწევის დეტექტორები თქვენი ობიექტის სრული დაცვისთვის.</p>
+                    <a href="alarm.html" class="learn-more" data-i18n="learn_more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="service-card fade-in slide-up" style="transition-delay: 0.4s;">
                     <div class="service-icon">🔥</div>
-                    <h3 class="service-title">სახანძრო სისტემები</h3>
-                    <p class="service-desc">კვამლის და ტემპერატურის დეტექტორები, ავტომატური სახანძრო სისტემები.</p>
-                    <a href="fire.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="service-title" data-i18n="service_fire">სახანძრო სისტემები</h3>
+                    <p class="service-desc" data-i18n="service_fire_desc">კვამლის და ტემპერატურის დეტექტორები, ავტომატური სახანძრო სისტემები.</p>
+                    <a href="fire.html" class="learn-more" data-i18n="learn_more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="service-card fade-in slide-up" style="transition-delay: 0.6s;">
                     <div class="service-icon">🚪</div>
-                    <h3 class="service-title">ელექტრო საკეტები</h3>
-                    <p class="service-desc">მოწინავე ელექტრონული საკეტების სისტემები კარგად დაცული წვდომისთვის.</p>
-                    <a href="locks.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="service-title" data-i18n="service_locks">ელექტრო საკეტები</h3>
+                    <p class="service-desc" data-i18n="service_locks_desc">მოწინავე ელექტრონული საკეტების სისტემები კარგად დაცული წვდომისთვის.</p>
+                    <a href="locks.html" class="learn-more" data-i18n="learn_more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="service-card fade-in slide-up" style="transition-delay: 0.8s;">
                     <div class="service-icon">🚗</div>
-                    <h3 class="service-title">შლაგბაუმები</h3>
-                    <p class="service-desc">ავტომატური შლაგბაუმები პარკინგების და ტერიტორიების კონტროლირებადი წვდომისთვის.</p>
-                    <a href="barriers.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="service-title" data-i18n="service_barriers">შლაგბაუმები</h3>
+                    <p class="service-desc" data-i18n="service_barriers_desc">ავტომატური შლაგბაუმები პარკინგების და ტერიტორიების კონტროლირებადი წვდომისთვის.</p>
+                    <a href="barriers.html" class="learn-more" data-i18n="learn_more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="service-card fade-in slide-up" style="transition-delay: 1s;">
                     <div class="service-icon">🚶‍♂️</div>
-                    <h3 class="service-title">ტურნიკეტები</h3>
-                    <p class="service-desc">ადამიანების ნაკადის კონტროლის სისტემები ბიზნეს ცენტრებისა და საჯარო ადგილებისთვის.</p>
-                    <a href="turnstiles.html" class="learn-more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="service-title" data-i18n="service_turnstiles">ტურნიკეტები</h3>
+                    <p class="service-desc" data-i18n="service_turnstiles_desc">ადამიანების ნაკადის კონტროლის სისტემები ბიზნეს ცენტრებისა და საჯარო ადგილებისთვის.</p>
+                    <a href="turnstiles.html" class="learn-more" data-i18n="learn_more">გაიგე მეტი <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -752,12 +752,12 @@
     <!-- ჩვენს შესახებ -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title fade-in">ჩვენ შესახებ</h2>
+            <h2 class="section-title fade-in" data-i18n="about_title">ჩვენ შესახებ</h2>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <p>CamDefenderSys არის ლიდერი უსაფრთხოების სისტემების ინსტალაციასა და მომსახურებაში. ჩვენი კომპანია მუშაობს 2010 წლიდან და დღეს ჩვენ გვაქვს 1000-ზე მეტი კმაყოფილი კლიენტი მთელი ქვეყნის მასშტაბით.</p>
-                    <p>ჩვენი გუნდი შედგება მაღალკვალიფიციური სპეციალისტებისგან, რომლებიც მუდმივად ახდენენ თანამედროვე ტექნოლოგიების მონიტორინგს და განახლებას, რათა მოგაწოდოთ საუკეთესო გადაწყვეტილებები უსაფრთხოების სფეროში.</p>
-                    <p>ჩვენ ვმუშაობთ როგორც სახლების, ასევე ბიზნეს ობიექტებისთვის, უზრუნველყოფთ ინდივიდუალურ მიდგომას და სრულ მომსახურებას სისტემების დაყენებიდან მათი მომსახურებამდე.</p>
+                    <p data-i18n="about_text_1">CamDefenderSys არის ლიდერი უსაფრთხოების სისტემების ინსტალაციასა და მომსახურებაში. ჩვენი კომპანია მუშაობს 2010 წლიდან და დღეს ჩვენ გვაქვს 1000-ზე მეტი კმაყოფილი კლიენტი მთელი ქვეყნის მასშტაბით.</p>
+                    <p data-i18n="about_text_2">ჩვენი გუნდი შედგება მაღალკვალიფიციური სპეციალისტებისგან, რომლებიც მუდმივად ახდენენ თანამედროვე ტექნოლოგიების მონიტორინგს და განახლებას, რათა მოგაწოდოთ საუკეთესო გადაწყვეტილებები უსაფრთხოების სფეროში.</p>
+                    <p data-i18n="about_text_3">ჩვენ ვმუშაობთ როგორც სახლების, ასევე ბიზნეს ო ბიექტებისთვის, უზრუნველყოფთ ინდივიდუალურ მიდგომას და სრულ მომსახურებას სისტემების დაყენებიდან მათი მომსახურებამდე.</p>
                 </div>
                 <div class="about-image fade-in slide-up">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="CamDefenderSys Team" class="lightbox-trigger" data-src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80">
@@ -769,13 +769,13 @@
     <!-- კონტაქტი -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title fade-in">კონტაქტი</h2>
+            <h2 class="section-title fade-in" data-i18n="contact_title">კონტაქტი</h2>
             <div class="contact-grid">
                 <div class="contact-info fade-in">
-                    <h3>დაგვიკავშირდით</h3>
+                    <h3 data-i18n="contact_info_title">დაგვიკავშირდით</h3>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <span>მთელი საქართველოს მასშტაბით</span>
+                        <span data-i18n="contact_address">მთელი საქართველოს მასშტაბით</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone contact-icon"></i>
@@ -791,23 +791,23 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock contact-icon"></i>
-                        <span>ორშ-კვირა: 9:00 - 18:00</span>
+                        <span data-i18n="contact_hours">ორშ-კვირა: 9:00 - 18:00</span>
                     </div>
                 </div>
                 
                 <div class="contact-info fade-in slide-up" style="transition-delay: 0.2s;">
-                    <h3>დატოვე შეტყობინება</h3>
+                    <h3 data-i18n="contact_form_title">დატოვე შეტყობინება</h3>
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" placeholder="თქვენი სახელი" required>
+                            <input type="text" placeholder="თქვენი სახელი" data-i18n="form_name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="თქვენი ელ. ფოსტა" required>
+                            <input type="email" placeholder="თქვენი ელ. ფოსტა" data-i18n="form_email" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="თქვენი შეტყობინება" rows="4" required></textarea>
+                            <textarea placeholder="თქვენი შეტყობინება" rows="4" data-i18n="form_message" required></textarea>
                         </div>
-                        <button type="submit" class="btn">გაგზავნა</button>
+                        <button type="submit" class="btn" data-i18n="form_submit">გაგზავნა</button>
                     </form>
                 </div>
             </div>
@@ -819,8 +819,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>CamDefenderSys</h3>
-                    <p>თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
+                    <h3 data-i18n="footer_company">CamDefenderSys</h3>
+                    <p data-i18n="footer_company_desc">თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -830,88 +830,263 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>სერვისები</h3>
+                    <h3 data-i18n="footer_services">სერვისები</h3>
                     <ul class="footer-links">
-                        <li><a href="cctv.html">CCTV კამერები</a></li>
-                        <li><a href="alarm.html">სიგნალიზაცია</a></li>
-                        <li><a href="fire.html">სახანძრო სისტემები</a></li>
-                        <li><a href="locks.html">ელექტრო საკეტები</a></li>
-                        <li><a href="barriers.html">შლაგბაუმები</a></li>
-                        <li><a href="turnstiles.html">ტურნიკეტები</a></li>
+                        <li><a href="cctv.html" data-i18n="service_cctv">CCTV კამერები</a></li>
+                        <li><a href="alarm.html" data-i18n="service_alarm">სიგნალიზაცია</a></li>
+                        <li><a href="fire.html" data-i18n="service_fire">სახანძრო სისტემები</a></li>
+                        <li><a href="locks.html" data-i18n="service_locks">ელექტრო საკეტები</a></li>
+                        <li><a href="barriers.html" data-i18n="service_barriers">შლაგბაუმები</a></li>
+                        <li><a href="turnstiles.html" data-i18n="service_turnstiles">ტურნიკეტები</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>სწრაფი ბმულები</h3>
+                    <h3 data-i18n="footer_links">სწრაფი ბმულები</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">მთავარი</a></li>
-                        <li><a href="#services">სერვისები</a></li>
-                        <li><a href="#about">ჩვენ შესახებ</a></li>
-                        <li><a href="#contact">კონტაქტი</a></li>
-                        <li><a href="#">ბლოგი</a></li>
+                        <li><a href="#home" data-i18n="nav-home">მთავარი</a></li>
+                        <li><a href="#services" data-i18n="nav-services">სერვისები</a></li>
+                        <li><a href="#about" data-i18n="nav-about">ჩვენ შესახებ</a></li>
+                        <li><a href="#contact" data-i18n="nav-contact">კონტაქტი</a></li>
+                        <li><a href="#" data-i18n="footer_blog">ბლოგი</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
+                <p data-i18n="footer_copyright">© 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
             </div>
         </div>
     </footer>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <span class="close-lightbox" id="closeLightbox">&times;</span>
+        <span class="close-lightbox" id="closeLightbox">×</span>
         <div class="lightbox-content">
             <img id="lightboxImage" src="" alt="Lightbox Image">
         </div>
     </div>
 
     <script>
+        // თარგმანების ობიექტი
+        const translations = {
+            ka: {
+                language: "ქართული",
+                page_title: "CamDefenderSys | უსაფრთხოების სისტემები",
+                "nav-home": "მთავარი",
+                "nav-services": "სერვისები",
+                "nav-about": "ჩვენ შესახებ",
+                "nav-contact": "კონტაქტი",
+                hero_title: "CamDefenderSys",
+                hero_slogan: "თქვენი უსაფრთხოება — ჩვენი პრიორიტეტია",
+                hero_cta: "სერვისების ნახვა",
+                services_title: "ჩვენი სერვისები",
+                service_cctv: "CCTV კამერები",
+                service_cctv_desc: "მაღალი გარჩევადობის CCTV კამერების დაყენება და კონფიგურაცია თქვენი უსაფრთხოებისთვის.",
+                service_alarm: "სიგნალიზაცია",
+                service_alarm_desc: "მოძრაობის, მსხვრევის და შეღწევის დეტექტორები თქვენი ობიექტის სრული დაცვისთვის.",
+                service_fire: "სახანძრო სისტემები",
+                service_fire_desc: "კვამლის და ტემპერატურის დეტექტორები, ავტომატური სახანძრო სისტემები.",
+                service_locks: "ელექტრო საკეტები",
+                service_locks_desc: "მოწინავე ელექტრონული საკეტების სისტემები კარგად დაცული წვდომისთვის.",
+                service_barriers: "შლაგბაუმები",
+                service_barriers_desc: "ავტომატური შლაგბაუმები პარკინგების და ტერიტორიების კონტროლირებადი წვდომისთვის.",
+                service_turnstiles: "ტურნიკეტები",
+                service_turnstiles_desc: "ადამიანების ნაკადის კონტროლის სისტემები ბიზნეს ცენტრებისა და საჯარო ადგილებისთვის.",
+                learn_more: "გაიგე მეტი",
+                about_title: "ჩვენ შესახებ",
+                about_text_1: "CamDefenderSys არის ლიდერი უსაფრთხოების სისტემების ინსტალაციასა და მომსახურებაში. ჩვენი კომპანია მუშაობს 2010 წლიდან და დღეს ჩვენ გვაქვს 1000-ზე მეტი კმაყოფილი კლიენტი მთელი ქვეყნის მასშტაბით.",
+                about_text_2: "ჩვენი გუნდი შედგება მაღალკვალიფიციური სპეციალისტებისგან, რომლებიც მუდმივად ახდენენ თანამედროვე ტექნოლოგიების მონიტორინგს და განახლებას, რათა მოგაწოდოთ საუკეთესო გადაწყვეტილებები უსაფრთხოების სფეროში.",
+                about_text_3: "ჩვენ ვმუშაობთ როგორც სახლების, ასევე ბიზნეს ობიექტებისთვის, უზრუნველყოფთ ინდივიდუალურ მიდგომას და სრულ მომსახურებას სისტემების დაყენებიდან მათი მომსახურებამდე.",
+                contact_title: "კონტაქტი",
+                contact_info_title: "დაგვიკავშირდით",
+                contact_address: "მთელი საქართველოს მასშტაბით",
+                contact_hours: "ორშ-კვირა: 9:00 - 18:00",
+                contact_form_title: "დატოვე შეტყობინება",
+                form_name: "თქვენი სახელი",
+                form_email: "თქვენი ელ. ფოსტა",
+                form_message: "თქვენი შეტყობინება",
+                form_submit: "გაგზავნა",
+                footer_company: "CamDefenderSys",
+                footer_company_desc: "თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.",
+                footer_services: "სერვისები",
+                footer_links: "სწრაფი ბმულები",
+                footer_blog: "ბლოგი",
+                footer_copyright: "© 2023 CamDefenderSys. ყველა უფლება დაცულია."
+            },
+            en: {
+                language: "English",
+                page_title: "CamDefenderSys | Security Systems",
+                "nav-home": "Home",
+                "nav-services": "Services",
+                "nav-about": "About Us",
+                "nav-contact": "Contact",
+                hero_title: "CamDefenderSys",
+                hero_slogan: "Your Security — Our Priority",
+                hero_cta: "View Services",
+                services_title: "Our Services",
+                service_cctv: "CCTV Cameras",
+                service_cctv_desc: "Installation and configuration of high-resolution CCTV cameras for your safety.",
+                service_alarm: "Alarm Systems",
+                service_alarm_desc: "Motion, glass-break, and intrusion detectors for complete property protection.",
+                service_fire: "Fire Systems",
+                service_fire_desc: "Smoke and temperature detectors, automatic fire suppression systems.",
+                service_locks: "Electronic Locks",
+                service_locks_desc: "Advanced electronic lock systems for secure access control.",
+                service_barriers: "Barriers",
+                service_barriers_desc: "Automatic barriers for controlled access to parking and territories.",
+                service_turnstiles: "Turnstiles",
+                service_turnstiles_desc: "People flow control systems for business centers and public places.",
+                learn_more: "Learn More",
+                about_title: "About Us",
+                about_text_1: "CamDefenderSys is a leader in security system installation and maintenance. Operating since 2010, we have over 1,000 satisfied clients nationwide.",
+                about_text_2: "Our team consists of highly qualified specialists who continuously monitor and upgrade modern technologies to provide you with the best security solutions.",
+                about_text_3: "We serve both residential and commercial properties, offering personalized approaches and comprehensive services from system installation to maintenance.",
+                contact_title: "Contact",
+                contact_info_title: "Get in Touch",
+                contact_address: "Nationwide in Georgia",
+                contact_hours: "Mon-Sun: 9:00 - 18:00",
+                contact_form_title: "Leave a Message",
+                form_name: "Your Name",
+                form_email: "Your Email",
+                form_message: "Your Message",
+                form_submit: "Send",
+                footer_company: "CamDefenderSys",
+                footer_company_desc: "Leading security solutions provider in Georgia.",
+                footer_services: "Services",
+                footer_links: "Quick Links",
+                footer_blog: "Blog",
+                footer_copyright: "© 2023 CamDefenderSys. All rights reserved."
+            },
+            ru: {
+                language: "Русский",
+                page_title: "CamDefenderSys | Системы безопасности",
+                "nav-home": "Главная",
+                "nav-services": "Услуги",
+                "nav-about": "О нас",
+                "nav-contact": "Контакты",
+                hero_title: "CamDefenderSys",
+                hero_slogan: "Ваша безопасность — наш приоритет",
+                hero_cta: "Посмотреть услуги",
+                services_title: "Наши услуги",
+                service_cctv: "Камеры видеонаблюдения",
+                service_cctv_desc: "Установка и настройка камер видеонаблюдения высокого разрешения для вашей безопасности.",
+                service_alarm: "Системы сигнализации",
+                service_alarm_desc: "Детекторы движения, разбития стекла и проникновения для полной защиты вашего объекта.",
+                service_fire: "Пожарные системы",
+                service_fire_desc: "Детекторы дыма и температуры, автоматические системы пожаротушения.",
+                service_locks: "Электронные замки",
+                service_locks_desc: "Передовые системы электронных замков для надежного контроля доступа.",
+                service_barriers: "Шлагбаумы",
+                service_barriers_desc: "Автоматические шлагбаумы для контролируемого доступа к парковкам и территориям.",
+                service_turnstiles: "Турникеты",
+                service_turnstiles_desc: "Системы контроля потока людей для бизнес-центров и общественных мест.",
+                learn_more: "Узнать больше",
+                about_title: "О нас",
+                about_text_1: "CamDefenderSys — лидер в установке и обслуживании систем безопасности. Работая с 2010 года, мы имеем более 1000 довольных клиентов по всей стране.",
+                about_text_2: "Наша команда состоит из высококвалифицированных специалистов, которые постоянно отслеживают и внедряют современные технологии, чтобы предоставить вам лучшие решения в области безопасности.",
+                about_text_3: "Мы обслуживаем как жилые, так и коммерческие объекты, предлагая индивидуальный подход и полный спектр услуг от установки систем до их обслуживания.",
+                contact_title: "Контакты",
+                contact_info_title: "Свяжитесь с нами",
+                contact_address: "По всей Грузии",
+                contact_hours: "Пн-Вс: 9:00 - 18:00",
+                contact_form_title: "Оставьте сообщение",
+                form_name: "Ваше имя",
+                form_email: "Ваш email",
+                form_message: "Ваше сообщение",
+                form_submit: "Отправить",
+                footer_company: "CamDefenderSys",
+                footer_company_desc: "Ведущий поставщик решений безопасности в Грузии.",
+                footer_services: "Услуги",
+                footer_links: "Быстрые ссылки",
+                footer_blog: "Блог",
+                footer_copyright: "© 2023 CamDefenderSys. Все права защищены."
+            }
+        };
+
+        // ენის გადართვის ფუნქცია
+        function setLanguage(lang) {
+            try {
+                // განაახლე ყველა data-i18n ელემენტი
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+
+                // განაახლე placeholder-ები
+                document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        element.placeholder = translations[lang][key];
+                    }
+                });
+
+                // განაახლე ენის ღილაკის ტექსტი
+                const languageBtn = document.getElementById('languageBtn');
+                if (languageBtn) {
+                    languageBtn.querySelector('span').textContent = translations[lang].language;
+                }
+
+                // შეინახე არჩეული ენა
+                localStorage.setItem('language', lang);
+            } catch (error) {
+                console.error('Error in setLanguage:', error);
+            }
+        }
+
+        // ჩატვირთე შენახული ენა ან ნაგულისხმევი (ქართული)
+        const savedLang = localStorage.getItem('language') || 'ka';
+        setLanguage(savedLang);
+
         // ენის შერჩევის ფუნქციონალი
         const languageBtn = document.getElementById('languageBtn');
         const languageDropdown = document.getElementById('languageDropdown');
 
-        languageBtn.addEventListener('click', () => {
-            languageDropdown.classList.toggle('show');
-        });
-
-        // დოკუმენტზე დაჭერისას დროპდაუნის დახურვა
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.language-switcher')) {
-                languageDropdown.classList.remove('show');
-            }
-        });
-
-        // ენის ცვლილება
-        const languageOptions = document.querySelectorAll('.language-option');
-        languageOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const lang = option.getAttribute('data-lang');
-                // აქ დაემატება ენის ცვლილების ლოგიკა
-                languageBtn.querySelector('span').textContent = option.querySelector('span:last-child').textContent;
-                languageDropdown.classList.remove('show');
+        if (languageBtn && languageDropdown) {
+            languageBtn.addEventListener('click', () => {
+                languageDropdown.classList.toggle('show');
             });
-        });
+
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const lang = option.getAttribute('data-lang');
+                    setLanguage(lang);
+                    languageDropdown.classList.remove('show');
+                });
+            });
+
+            // დოკუმენტზე დაჭერისას დროპდაუნის დახურვა
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.language-switcher')) {
+                    languageDropdown.classList.remove('show');
+                }
+            });
+        }
 
         // მობილური მენიუ
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+        }
 
         // სკროლის ეფექტები
         window.addEventListener('scroll', () => {
             // ნავიგაციის ეფექტი
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+            if (navbar) {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
             }
 
             // fade-in ეფექტები
@@ -943,34 +1118,38 @@
         const lightboxImage = document.getElementById('lightboxImage');
         const closeLightbox = document.getElementById('closeLightbox');
 
-        lightboxTriggers.forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const imgSrc = trigger.getAttribute('data-src');
-                lightboxImage.src = imgSrc;
-                lightbox.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
+        if (lightboxTriggers && lightbox && lightboxImage && closeLightbox) {
+            lightboxTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const imgSrc = trigger.getAttribute('data-src');
+                    lightboxImage.src = imgSrc;
+                    lightbox.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
             });
-        });
 
-        closeLightbox.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
+            closeLightbox.addEventListener('click', () => {
                 lightbox.style.display = 'none';
                 document.body.style.overflow = 'auto';
-            }
-        });
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
 
         // ფორმის გაგზავნა
         const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('თქვენი შეტყობინება გაგზავნილია! ჩვენი თანამშრომელი დაგიკავშირდებათ მოკლე დროში.');
-            contactForm.reset();
-        });
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert(translations[savedLang].form_submit + ' successful!');
+                contactForm.reset();
+            });
+        }
 
         // ინიციალიზაციისას გამოჩენა ელემენტებისთვის, რომლებიც უკვე ხილვადია
         document.addEventListener('DOMContentLoaded', () => {
