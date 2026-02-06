@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>სახანძრო სისტემები | CamDefenderSys</title>
+    <title>სახანძრო სისტემები | Smart Security</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -32,25 +32,23 @@
 
         /* ენის შერჩევის მენიუ */
         .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
+  position: fixed; /* აქამდე absolute იყო */
+  top: 1px;
+  right: 20px;
+  z-index: 1000;
+}
 
-        .language-btn {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
+.language-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
         .language-btn:hover {
             background: white;
@@ -578,7 +576,7 @@
     <!-- ნავიგაცია -->
     <nav id="navbar">
         <div class="nav-container">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="nav-logo">
+            <img src="logo.png" alt="Smart Security Logo" class="nav-logo">
             <button class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </button>
@@ -594,7 +592,7 @@
     <!-- ჰედერი -->
     <header>
         <div class="header-content">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="logo">
+            <img src="logo.png" alt="Smart Security Logo" class="logo">
             <h1 data-i18n="header-title">სახანძრო სისტემები</h1>
             <p class="slogan" data-i18n="header-slogan">უსაფრთხოება ხანძრისგან ყოველთვის</p>
         </div>
@@ -606,7 +604,7 @@
             <h2 class="section-title" data-i18n="fire-title">სახანძრო სისტემების მიმოხილვა</h2>
             <div class="fire-content">
                 <div class="fire-text">
-                    <p data-i18n="fire-text-1">CamDefenderSys გთავაზობთ მოწინავე სახანძრო სისტემებს, რომლებიც იცავენ თქვენს ქონებას და ადამიანებს ხანძრის საფრთხისგან. ჩვენი სისტემები შექმნილია ხანძრის ადრეული გამოვლენისა და სწრაფი რეაგირების უზრუნველსაყოფად.</p>
+                    <p data-i18n="fire-text-1">Smart Security გთავაზობთ მოწინავე სახანძრო სისტემებს, რომლებიც იცავენ თქვენს ქონებას და ადამიანებს ხანძრის საფრთხისგან. ჩვენი სისტემები შექმნილია ხანძრის ადრეული გამოვლენისა და სწრაფი რეაგირების უზრუნველსაყოფად.</p>
                     <p data-i18n="fire-text-2">ჩვენი სახანძრო სისტემები მოიცავს კვამლის დეტექტორებს, რომლებიც აღმოაჩენენ ხანძრის პირველ ნიშნებს, თბო დეტექტორებს, რომლებიც რეაგირებენ ტემპერატურის მატებაზე, და ლაზერულ დეტექტორებს, რომლებიც იდეალურია დიდი სივრცეებისთვის. გარდა ამისა, ჩვენ გთავაზობთ ხმოვან სიგნალიზაციას და გადაუდებელ განათებას ევაკუაციის გასაადვილებლად. ჩვენ ვუზრუნველყოფთ სისტემის დაპროექტებას, ინსტალაციას, და მუდმივ მხარდაჭერას.</p>
                     <div class="fire-features">
                         <h3 data-i18n="fire-features-title">ჩვენი სახანძრო სისტემების უპირატესობები</h3>
@@ -636,15 +634,15 @@
                     <h3 data-i18n="contact-info-title">დაგვიკავშირდით</h3>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <span data-i18n="contact-address">თბილისი, ქავთარაძის ქ. #12</span>
+                        <span data-i18n="contact-address">მთელი საქართველოს მასშტაბით</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone contact-icon"></i>
-                        <span>+995 555 12 34 56</span>
+                        <span>+995  593 13 83 00</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope contact-icon"></i>
-                        <span>info@camdefendersys.ge</span>
+                        <span>info@smartsecurity.com.ge</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock contact-icon"></i>
@@ -676,7 +674,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 data-i18n="footer-title">CamDefenderSys</h3>
+                    <h3 data-i18n="footer-title">Smart Security</h3>
                     <p data-i18n="footer-desc">თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -712,7 +710,7 @@
             </div>
             
             <div class="copyright">
-                <p data-i18n="footer-copyright">© 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
+                <p data-i18n="footer-copyright">© 2023 Smart Security. ყველა უფლება დაცულია.</p>
             </div>
         </div>
     </footer>
@@ -729,7 +727,7 @@
                 "header-title": "სახანძრო სისტემები",
                 "header-slogan": "უსაფრთხოება ხანძრისგან ყოველთვის",
                 "fire-title": "სახანძრო სისტემების მიმოხილვა",
-                "fire-text-1": "CamDefenderSys გთავაზობთ მოწინავე სახანძრო სისტემებს, რომლებიც იცავენ თქვენს ქონებას და ადამიანებს ხანძრის საფრთხისგან. ჩვენი სისტემები შექმნილია ხანძრის ადრეული გამოვლენისა და სწრაფი რეაგირების უზრუნველსაყოფად.",
+                "fire-text-1": "Smart Security გთავაზობთ მოწინავე სახანძრო სისტემებს, რომლებიც იცავენ თქვენს ქონებას და ადამიანებს ხანძრის საფრთხისგან. ჩვენი სისტემები შექმნილია ხანძრის ადრეული გამოვლენისა და სწრაფი რეაგირების უზრუნველსაყოფად.",
                 "fire-text-2": "ჩვენი სახანძრო სისტემები მოიცავს კვამლის დეტექტორებს, რომლებიც აღმოაჩენენ ხანძრის პირველ ნიშნებს, თბო დეტექტორებს, რომლებიც რეაგირებენ ტემპერატურის მატებაზე, და ლაზერულ დეტექტორებს, რომლებიც იდეალურია დიდი სივრცეებისთვის. გარდა ამისა, ჩვენ გთავაზობთ ხმოვან სიგნალიზაციას და გადაუდებელ განათებას ევაკუაციის გასაადვილებლად. ჩვენ ვუზრუნველყოფთ სისტემის დაპროექტებას, ინსტალაციას, და მუდმივ მხარდაჭერას.",
                 "fire-features-title": "ჩვენი სახანძრო სისტემების უპირატესობები",
                 "fire-feature-1": "კვამლის დეტექტორები ხანძრის ადრეული გამოვლენისთვის",
@@ -740,20 +738,20 @@
                 "fire-feature-6": "ავტომატური ინტეგრაცია სამაშველო სამსახურებთან",
                 "contact-title": "კონტაქტი",
                 "contact-info-title": "დაგვიკავშირდით",
-                "contact-address": "თბილისი, ქავთარაძის ქ. #12",
+                "contact-address": "მთელი საქართველოს მასშტაბით",
                 "contact-hours": "ორშ-კვირა: 9:00 - 18:00",
                 "contact-form-title": "დატოვე შეტყობინება",
                 "form-name": "თქვენი სახელი",
                 "form-email": "თქვენი ელ. ფოსტა",
                 "form-message": "თქვენი შეტყობინება",
                 "form-submit": "გაგზავნა",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.",
                 "footer-services-title": "სერვისები",
                 "footer-links-title": "სწრაფი ბმულები",
                 "footer-prices": "ფასები",
                 "footer-blog": "ბლოგი",
-                "footer-copyright": "© 2023 CamDefenderSys. ყველა უფლება დაცულია.",
+                "footer-copyright": "© 2023 Smart Security. ყველა უფლება დაცულია.",
                 "service-cctv-title": "CCTV კამერები",
                 "service-alarm-title": "სიგნალიზაცია",
                 "service-fire-title": "სახანძრო სისტემები",
@@ -770,7 +768,7 @@
                 "header-title": "Fire Safety Systems",
                 "header-slogan": "Protection Against Fire, Always",
                 "fire-title": "Fire Safety Systems Overview",
-                "fire-text-1": "CamDefenderSys offers advanced fire safety systems that protect your property and people from fire hazards. Our systems are designed for early fire detection and rapid response.",
+                "fire-text-1": "Smart Security offers advanced fire safety systems that protect your property and people from fire hazards. Our systems are designed for early fire detection and rapid response.",
                 "fire-text-2": "Our fire safety systems include smoke detectors that identify the earliest signs of fire, heat detectors that respond to temperature increases, and laser beam detectors ideal for large spaces. Additionally, we provide audible alarms and emergency lighting to facilitate evacuation. We offer system design, installation, and ongoing support.",
                 "fire-features-title": "Advantages of Our Fire Safety Systems",
                 "fire-feature-1": "Smoke detectors for early fire detection",
@@ -781,20 +779,20 @@
                 "fire-feature-6": "Automatic integration with emergency services",
                 "contact-title": "Contact",
                 "contact-info-title": "Get in Touch",
-                "contact-address": "Tbilisi, Kavtaradze St. #12",
+                "contact-address": "Nationwide in Georgia",
                 "contact-hours": "Mon-Sun: 9:00 - 18:00",
                 "contact-form-title": "Leave a Message",
                 "form-name": "Your Name",
                 "form-email": "Your Email",
                 "form-message": "Your Message",
                 "form-submit": "Send",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "Leading security solutions provider in Georgia.",
                 "footer-services-title": "Services",
                 "footer-links-title": "Quick Links",
                 "footer-prices": "Prices",
                 "footer-blog": "Blog",
-                "footer-copyright": "© 2023 CamDefenderSys. All rights reserved.",
+                "footer-copyright": "© 2023 Smart Security. All rights reserved.",
                 "service-cctv-title": "CCTV Cameras",
                 "service-alarm-title": "Alarm Systems",
                 "service-fire-title": "Fire Systems",
@@ -811,7 +809,7 @@
                 "header-title": "Пожарные системы",
                 "header-slogan": "Защита от огня в любое время",
                 "fire-title": "Обзор пожарных систем",
-                "fire-text-1": "CamDefenderSys предлагает передовые пожарные системы, которые защищают ваше имущество и людей от пожарной опасности. Наши системы разработаны для раннего обнаружения пожара и быстрого реагирования.",
+                "fire-text-1": "Smart Security предлагает передовые пожарные системы, которые защищают ваше имущество и людей от пожарной опасности. Наши системы разработаны для раннего обнаружения пожара и быстрого реагирования.",
                 "fire-text-2": "Наши пожарные системы включают дымовые детекторы, которые обнаруживают первые признаки пожара, тепловые детекторы, реагирующие на повышение температуры, и лазерные детекторы, идеальные для больших помещений. Кроме того, мы предлагаем звуковые сирены и аварийное освещение для облегчения эвакуации. Мы обеспечиваем проектирование систем, установку и постоянную поддержку.",
                 "fire-features-title": "Преимущества наших пожарных систем",
                 "fire-feature-1": "Дымовые детекторы для раннего обнаружения пожара",
@@ -822,20 +820,20 @@
                 "fire-feature-6": "Автоматическая интеграция со спасательными службами",
                 "contact-title": "Контакты",
                 "contact-info-title": "Свяжитесь с нами",
-                "contact-address": "Тбилиси, ул. Кавтарадзе, 12",
+                "contact-address": "По всей Грузии",
                 "contact-hours": "Пн-Вс: 9:00 - 18:00",
                 "contact-form-title": "Оставьте сообщение",
                 "form-name": "Ваше имя",
                 "form-email": "Ваш email",
                 "form-message": "Ваше сообщение",
                 "form-submit": "Отправить",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "Ведущий поставщик решений безопасности в Грузии.",
                 "footer-services-title": "Услуги",
                 "footer-links-title": "Быстрые ссылки",
                 "footer-prices": "Цены",
                 "footer-blog": "Блог",
-                "footer-copyright": "© 2023 CamDefenderSys. Все права защищены.",
+                "footer-copyright": "© 2023 Smart Security. Все права защищены.",
                 "service-cctv-title": "Камеры видеонаблюдения",
                 "service-alarm-title": "Сигнализация",
                 "service-fire-title": "Пожарные системы",

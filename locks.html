@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ელექტრო და მექანიკური საკეტები | CamDefenderSys</title>
+    <title>ელექტრო და მექანიკური საკეტები | Smart Security</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -32,25 +32,23 @@
 
         /* ენის შერჩევის მენიუ */
         .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
+  position: fixed; /* აქამდე absolute იყო */
+  top: 1px;
+  right: 20px;
+  z-index: 1000;
+}
 
-        .language-btn {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
+.language-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
         .language-btn:hover {
             background: white;
@@ -578,7 +576,7 @@
     <!-- ნავიგაცია -->
     <nav id="navbar">
         <div class="nav-container">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="nav-logo">
+            <img src="logo.png" alt="Smart Security Logo" class="nav-logo">
             <button class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </button>
@@ -594,7 +592,7 @@
     <!-- ჰედერი -->
     <header>
         <div class="header-content">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="logo">
+            <img src="logo.png" alt="Smart Security Logo" class="logo">
             <h1 data-i18n="header-title">ელექტრო და მექანიკური საკეტები</h1>
             <p class="slogan" data-i18n="header-slogan">უსაფრთხო წვდომა თქვენს სივრცეში</p>
         </div>
@@ -606,7 +604,7 @@
             <h2 class="section-title" data-i18n="locks-title">საკეტების სისტემების მიმოხილვა</h2>
             <div class="locks-content">
                 <div class="locks-text">
-                    <p data-i18n="locks-text-1">CamDefenderSys გთავაზობთ ელექტრო და მექანიკურ საკეტებს, რომლებიც უზრუნველყოფენ თქვენი სივრცის მაღალ დონეზე დაცვას. ჩვენი სისტემები აერთიანებს თანამედროვე ტექნოლოგიებს, რათა უზრუნველყოთ უსაფრთხო და მარტივი წვდომა.</p>
+                    <p data-i18n="locks-text-1">Smart Security გთავაზობთ ელექტრო და მექანიკურ საკეტებს, რომლებიც უზრუნველყოფენ თქვენი სივრცის მაღალ დონეზე დაცვას. ჩვენი სისტემები აერთიანებს თანამედროვე ტექნოლოგიებს, რათა უზრუნველყოთ უსაფრთხო და მარტივი წვდომა.</p>
                     <p data-i18n="locks-text-2">ჩვენი საკეტები მოიცავს თითის ანაბეჭდის სკანერებს და ბიომეტრიულ კონტროლს უმაღლესი უსაფრთხოებისთვის, RFID ბარათებსა და წვდომის ბარათებს სწრაფი წვდომისთვის, სმარტფონის ინტეგრაციას კარის დისტანციური გაღებისთვის, და ციფრულ კოდებს უსაფრთხო შესვლისთვის. ჩვენ გთავაზობთ სხვადასხვა ტიპის სისტემებს: დამოუკიდებელს ერთი კარისთვის, ქსელურს მრავალი წერტილის მართვისთვის, და შენობის მართვის სისტემებს სრული ინტეგრაციისთვის.</p>
                     <div class="locks-features">
                         <h3 data-i18n="locks-features-title">ჩვენი საკეტების სისტემების უპირატესობები</h3>
@@ -621,7 +619,7 @@
                     </div>
                 </div>
                 <div class="locks-image">
-                    <img src="https://images.unsplash.com/photo-1584622657191-6df2a1a7a8a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Electronic Lock System">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Electronic Lock System">
                 </div>
             </div>
         </div>
@@ -636,15 +634,15 @@
                     <h3 data-i18n="contact-info-title">დაგვიკავშირდით</h3>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <span data-i18n="contact-address">თბილისი, ქავთარაძის ქ. #12</span>
+                        <span data-i18n="contact-address">მთელი საქართველოს მასშტაბით</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone contact-icon"></i>
-                        <span>+995 555 12 34 56</span>
+                        <span>+995 595 70 83 00</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope contact-icon"></i>
-                        <span>info@camdefendersys.ge</span>
+                        <span>info@smartsecurity.com.ge</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock contact-icon"></i>
@@ -676,7 +674,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 data-i18n="footer-title">CamDefenderSys</h3>
+                    <h3 data-i18n="footer-title">Smart Security</h3>
                     <p data-i18n="footer-desc">თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -712,7 +710,7 @@
             </div>
             
             <div class="copyright">
-                <p data-i18n="footer-copyright">© 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
+                <p data-i18n="footer-copyright">© 2023 Smart Security. ყველა უფლება დაცულია.</p>
             </div>
         </div>
     </footer>
@@ -729,7 +727,7 @@
                 "header-title": "ელექტრო და მექანიკური საკეტები",
                 "header-slogan": "უსაფრთხო წვდომა თქვენს სივრცეში",
                 "locks-title": "საკეტების სისტემების მიმოხილვა",
-                "locks-text-1": "CamDefenderSys გთავაზობთ ელექტრო და მექანიკურ საკეტებს, რომლებიც უზრუნველყოფენ თქვენი სივრცის მაღალ დონეზე დაცვას. ჩვენი სისტემები აერთიანებს თანამედროვე ტექნოლოგიებს, რათა უზრუნველყოთ უსაფრთხო და მარტივი წვდომა.",
+                "locks-text-1": "Smart Security გთავაზობთ ელექტრო და მექანიკურ საკეტებს, რომლებიც უზრუნველყოფენ თქვენი სივრცის მაღალ დონეზე დაცვას. ჩვენი სისტემები აერთიანებს თანამედროვე ტექნოლოგიებს, რათა უზრუნველყოთ უსაფრთხო და მარტივი წვდომა.",
                 "locks-text-2": "ჩვენი საკეტები მოიცავს თითის ანაბეჭდის სკანერებს და ბიომეტრიულ კონტროლს უმაღლესი უსაფრთხოებისთვის, RFID ბარათებსა და წვდომის ბარათებს სწრაფი წვდომისთვის, სმარტფონის ინტეგრაციას კარის დისტანციური გაღებისთვის, და ციფრულ კოდებს უსაფრთხო შესვლისთვის. ჩვენ გთავაზობთ სხვადასხვა ტიპის სისტემებს: დამოუკიდებელს ერთი კარისთვის, ქსელურს მრავალი წერტილის მართვისთვის, და შენობის მართვის სისტემებს სრული ინტეგრაციისთვის.",
                 "locks-features-title": "ჩვენი საკეტების სისტემების უპირატესობები",
                 "locks-feature-1": "თითის ანაბეჭდის სკანერები მაღალი სიზუსტით",
@@ -740,20 +738,20 @@
                 "locks-feature-6": "სრული ინტეგრაცია შენობის მართვის სისტემებთან",
                 "contact-title": "კონტაქტი",
                 "contact-info-title": "დაგვიკავშირდით",
-                "contact-address": "თბილისი, ქავთარაძის ქ. #12",
+                "contact-address": "მთელი საქართველოს მასშტაბით",
                 "contact-hours": "ორშ-კვირა: 9:00 - 18:00",
                 "contact-form-title": "დატოვე შეტყობინება",
                 "form-name": "თქვენი სახელი",
                 "form-email": "თქვენი ელ. ფოსტა",
                 "form-message": "თქვენი შეტყობინება",
                 "form-submit": "გაგზავნა",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.",
                 "footer-services-title": "სერვისები",
                 "footer-links-title": "სწრაფი ბმულები",
                 "footer-prices": "ფასები",
                 "footer-blog": "ბლოგი",
-                "footer-copyright": "© 2023 CamDefenderSys. ყველა უფლება დაცულია.",
+                "footer-copyright": "© 2023 Smart Security. ყველა უფლება დაცულია.",
                 "service-cctv-title": "CCTV კამერები",
                 "service-alarm-title": "სიგნალიზაცია",
                 "service-fire-title": "სახანძრო სისტემები",
@@ -770,7 +768,7 @@
                 "header-title": "Electronic and Mechanical Locks",
                 "header-slogan": "Secure Access to Your Space",
                 "locks-title": "Locks Systems Overview",
-                "locks-text-1": "CamDefenderSys offers electronic and mechanical locks that provide high-level security for your spaces. Our systems combine modern technologies to ensure safe and convenient access.",
+                "locks-text-1": "Smart Security offers electronic and mechanical locks that provide high-level security for your spaces. Our systems combine modern technologies to ensure safe and convenient access.",
                 "locks-text-2": "Our locks include fingerprint scanners and biometric controls for maximum security, RFID and access cards for quick access, smartphone integration for remote door unlocking, and digital codes for secure entry. We offer various system types: standalone for single doors, networked for multiple access points, and building management systems for full integration.",
                 "locks-features-title": "Advantages of Our Locks Systems",
                 "locks-feature-1": "High-precision fingerprint scanners",
@@ -781,20 +779,20 @@
                 "locks-feature-6": "Full integration with building management systems",
                 "contact-title": "Contact",
                 "contact-info-title": "Get in Touch",
-                "contact-address": "Tbilisi, Kavtaradze St. #12",
+                "contact-address": "Nationwide in Georgia",
                 "contact-hours": "Mon-Sun: 9:00 - 18:00",
                 "contact-form-title": "Leave a Message",
                 "form-name": "Your Name",
                 "form-email": "Your Email",
                 "form-message": "Your Message",
                 "form-submit": "Send",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "Leading security solutions provider in Georgia.",
                 "footer-services-title": "Services",
                 "footer-links-title": "Quick Links",
                 "footer-prices": "Prices",
                 "footer-blog": "Blog",
-                "footer-copyright": "© 2023 CamDefenderSys. All rights reserved.",
+                "footer-copyright": "© 2023 Smart Security. All rights reserved.",
                 "service-cctv-title": "CCTV Cameras",
                 "service-alarm-title": "Alarm Systems",
                 "service-fire-title": "Fire Systems",
@@ -811,7 +809,7 @@
                 "header-title": "Электронные и механические замки",
                 "header-slogan": "Безопасный доступ к вашему пространству",
                 "locks-title": "Обзор систем замков",
-                "locks-text-1": "CamDefenderSys предлагает электронные и механические замки, обеспечивающие высокий уровень безопасности ваших помещений. Наши системы сочетают современные технологии для обеспечения безопасного и удобного доступа.",
+                "locks-text-1": "Smart Security предлагает электронные и механические замки, обеспечивающие высокий уровень безопасности ваших помещений. Наши системы сочетают современные технологии для обеспечения безопасного и удобного доступа.",
                 "locks-text-2": "Наши замки включают сканеры отпечатков пальцев и биометрический контроль для максимальной безопасности, RFID и карты доступа для быстрого входа, интеграцию со смартфонами для удаленного открывания дверей и цифровые коды для безопасного входа. Мы предлагаем различные типы систем: автономные для одной двери, сетевые для управления несколькими точками доступа и системы управления зданием для полной интеграции.",
                 "locks-features-title": "Преимущества наших систем замков",
                 "locks-feature-1": "Высокоточные сканеры отпечатков пальцев",
@@ -822,20 +820,20 @@
                 "locks-feature-6": "Полная интеграция с системами управления зданием",
                 "contact-title": "Контакты",
                 "contact-info-title": "Свяжитесь с нами",
-                "contact-address": "Тбилиси, ул. Кавтарадзе, 12",
+                "contact-address": "По всей Грузии",
                 "contact-hours": "Пн-Вс: 9:00 - 18:00",
                 "contact-form-title": "Оставьте сообщение",
                 "form-name": "Ваше имя",
                 "form-email": "Ваш email",
                 "form-message": "Ваше сообщение",
                 "form-submit": "Отправить",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "Ведущий поставщик решений безопасности в Грузии.",
                 "footer-services-title": "Услуги",
                 "footer-links-title": "Быстрые ссылки",
                 "footer-prices": "Цены",
                 "footer-blog": "Блог",
-                "footer-copyright": "© 2023 CamDefenderSys. Все права защищены.",
+                "footer-copyright": "© 2023 Smart Security. Все права защищены.",
                 "service-cctv-title": "Камеры видеонаблюдения",
                 "service-alarm-title": "Сигнализация",
                 "service-fire-title": "Пожарные системы",

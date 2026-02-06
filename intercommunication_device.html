@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">CamDefenderSys | ინტერკომის სისტემები</title>
+    <title data-i18n="page_title">Smart Security | დომოფონის სისტემები</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #2c3e50;
@@ -33,27 +34,28 @@
         /* ენის შერჩევის მენიუ */
         .language-switcher {
             position: fixed;
-            top: 20px;
+            top: 1px;
             right: 20px;
             z-index: 1000;
         }
 
         .language-btn {
-            background: rgba(255, 255, 255, 0.8);
+            background: none;
             border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
+            color: white;
+            font-size: 1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 5px;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 8px 12px;
+            border-radius: 5px;
             transition: var(--transition);
         }
 
         .language-btn:hover {
             background: white;
+            color: var(--primary);
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
@@ -91,9 +93,8 @@
         header {
             position: relative;
             height: 60vh;
-            min-height: 400px;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
             color: white;
             display: flex;
             flex-direction: column;
@@ -115,17 +116,18 @@
             width: 150px;
             margin-bottom: 20px;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            cursor: pointer;
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: 15px;
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .slogan {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 300;
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
@@ -158,6 +160,7 @@
 
         .nav-logo {
             height: 40px;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -202,16 +205,16 @@
             font-size: 1.5rem;
         }
 
-        /* მთავარი კონტენტი */
+        /* მთავარი სექცია */
+        .intercom {
+            background: white;
+            padding: 100px 0;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-            position: relative;
         }
 
         .section-title {
@@ -234,55 +237,68 @@
             border-radius: 2px;
         }
 
-        .content-section {
+        .intercom-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .intercom-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* შედარების ცხრილი */
+        .comparison {
+            background: #f9f9f9;
+            padding: 60px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            max-width: 1000px;
             background: white;
-        }
-
-        .content-section img {
-            max-width: 100%;
             border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin: 20px 0;
         }
 
-        .content-section h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin: 30px 0 15px;
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
 
-        .content-section p {
-            margin-bottom: 20px;
-            opacity: 0.9;
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
         }
 
-        .content-section ul {
-            list-style: none;
-            margin-bottom: 20px;
+        .comparison-table td {
+            font-size: 1rem;
+            color: #333;
         }
 
-        .content-section ul li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            gap: 10px;
+        .comparison-table tr:last-child td {
+            border-bottom: none;
         }
 
-        .content-section ul li i {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-top: 4px;
-        }
-
-        /* კონტაქტი */
-        .contact {
+        /* CTA სექცია */
+        .cta {
             background: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') fixed;
             background-size: cover;
             position: relative;
+            padding: 60px 0;
             color: white;
+            text-align: center;
         }
 
-        .contact:before {
+        .cta:before {
             content: '';
             position: absolute;
             top: 0;
@@ -292,40 +308,26 @@
             background: rgba(26, 37, 47, 0.9);
         }
 
-        .contact .container {
+        .cta .container {
             position: relative;
             z-index: 1;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .contact-info {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-info h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            gap: 10px;
-        }
-
-        .contact-icon {
-            font-size: 1.2rem;
-            color: var(--accent);
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
         }
 
         /* ფუტერი */
@@ -401,13 +403,6 @@
             transform: translateY(-3px);
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbb;
-            font-size: 0.9rem;
-        }
 
         /* ანიმაციები */
         @keyframes fadeInUp {
@@ -450,11 +445,11 @@
         /* რესპონსივობა */
         @media (max-width: 992px) {
             h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .slogan {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
         }
 
@@ -488,6 +483,15 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .intercom, .comparison, .cta {
+                padding: 60px 0;
+            }
+
+            .comparison-table th, .comparison-table td {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -496,11 +500,11 @@
             }
 
             .slogan {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
 
-            section {
-                padding: 60px 0;
+            .comparison-table {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -531,12 +535,14 @@
     <!-- ნავიგაცია -->
     <nav id="navbar">
         <div class="nav-container">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="nav-logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Smart Security Logo" class="nav-logo">
+            </a>
             <button class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" data-i18n="nav-home">მთავარი</a></li>
+                <li><a href="index.html#home" data-i18n="nav-home">მთავარი</a></li>
                 <li><a href="index.html#services" data-i18n="nav-services">სერვისები</a></li>
                 <li><a href="index.html#about" data-i18n="nav-about">ჩვენ შესახებ</a></li>
                 <li><a href="index.html#contact" data-i18n="nav-contact">კონტაქტი</a></li>
@@ -547,107 +553,74 @@
     <!-- ჰედერი -->
     <header>
         <div class="header-content">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="logo">
-            <h1 data-i18n="intercom_title">ინტერკომის სისტემები</h1>
-            <p class="slogan" data-i18n="intercom_slogan">უსაფრთხო და მარტივი კომუნიკაცია თქვენი ობიექტისთვის</p>
+            <a href="index.html">
+                <img src="logo.png" alt="Smart Security Logo" class="logo">
+            </a>
+            <h1 data-i18n="intercom_title">დომოფონის სისტემები</h1>
+            <p class="slogan" data-i18n="intercom_slogan">უსაფრთხო კომუნიკაცია და კონტროლი</p>
         </div>
     </header>
 
-    <!-- მთავარი შინაარსი -->
-    <section class="content-section">
+    <!-- დომოფონის შესახებ -->
+    <section class="intercom" id="intercom">
         <div class="container">
-            <h2 class="section-title fade-in" data-i18n="intercom_overview">ინ| ანალოგური და IP ინტერკომის მიმოხილვა</h2>
-            
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Modern IP Intercom" class="fade-in slide-up">
-            
-            <h3 data-i18n="analog_intercom">ანალოგური ინტერკომის სისტემა</h3>
-            <p data-i18n="analog_intercom_desc">ანალოგური ინტერკომის სისტემა არის ტრადიციული კომუნიკაციის საშუალება, რომელიც იყენებს ანალოგურ ელექტრულ სიგნალებს ხმის ან/და ვიდეოს გადასაცემად. ეს სისტემები მოიცავს მთავარ სადგურს და სუბსადგურებს, დაკავშირებულს სპეციალური სადენებით. ხმოვანი სიგნალები გადაიცემა მუდმივი დენის ხაზზე (12-48V), ხოლო ვიდეოსთვის საჭიროა დამატებითი სადენები.</p>
-            
-            <h4 data-i18n="analog_purpose">დანიშნულება</h4>
-            <ul class="fade-in slide-up">
-                <li><i class="fas fa-check"></i><span data-i18n="analog_purpose_1">საცხოვრებელი შენობების შესასვლელთან ვიზიტორებთან კომუნიკაცია და წვდომის კონტროლი.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="analog_purpose_2">ოფისებში და სკოლებში შიდა კომუნიკაციისა და უსაფრთხოების მართვა.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="analog_purpose_3">სამრეწველო ობიექტებში მუშაკთა კოორდინაცია.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="analog_purpose_4">ავტომობილებსა და გემებში ეკიპაჟის კომუნიკაცია.</span></li>
-            </ul>
-            
-            <h4 data-i18n="analog_advantages">უპირატესობები</h4>
-            <ul class="fade-in slide-up">
-                <li><i class="fas fa-check"></i><span data-i18n="analog_advantage_1">საიმედოობა: ნაკლებად მგრძნობიარეა ქსელის გათიშვის მიმართ.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="analog_advantage_2">სიმარტივე: მარტივი ინსტალაცია მცირე ობიექტებში.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="analog_advantage_3">ხარჯთეფექტურობა: დაბალი საწყისი ღირებულება.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="analog_advantage_4">მარტივი მოვლა: არ საჭიროებს რთულ პროგრამულ განახლებებს.</span></li>
-            </ul>
-            
-            <h3 data-i18n="ip_intercom">IP ინტერკომის სისტემა</h3>
-            <p data-i18n="ip_intercom_desc">IP ინტერკომის სისტემა იყენებს ინტერნეტ პროტოკოლს (IP) ხმის, ვიდეოსა და მონაცემების გადასაცემად Ethernet-ის ან Wi-Fi ქსელის მეშვეობით. ეს სისტემები ინტეგრირდება თანამედროვე ქსელურ ინფრასტრუქტურასთან, მხარს უჭერენ მაღალი გარჩევადობის ვიდეოსა და დისტანციურ წვდომას.</p>
-            
-            <h4 data-i18n="ip_purpose">დანიშნულება</h4>
-            <ul class="fade-in slide-up">
-                <li><i class="fas fa-check"></i><span data-i18n="ip_purpose_1">მრავალსართულიანი საცხოვრებელი კომპლექსებისა და ჭკვიანი სახლების მართვა.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="ip_purpose_2">კომერციული ობიექტების უსაფრთხოებისა და კომუნიკაციის ინტეგრირებული გადაწყვეტილებები.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="ip_purpose_3">საავადმყოფოებსა და სასწავლო დაწესებულებებში მოქნილი კომუნიკაცია.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="ip_purpose_4">დისტანციური მონიტორინგი და კონტროლი მობილური აპლიკაციების საშუალებით.</span></li>
-            </ul>
-            
-            <h4 data-i18n="ip_advantages">უპირატესობები</h4>
-            <ul class="fade-in slide-up">
-                <li><i class="fas fa-check"></i><span data-i18n="ip_advantage_1">მაღალი ხარისხის ხმა და ვიდეო: HD ვიდეო და ნათელი ხმა.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="ip_advantage_2">მოქნილობა: მარტივი ინტეგრაცია CCTV-სთან, წვდომის კონტროლთან და სხვა სისტემებთან.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="ip_advantage_3">დისტანციური წვდომა: კონტროლი სმარტფონის ან კომპიუტერის საშუალებით.</span></li>
-                <li><i class="fas fa-check"></i><span data-i18n="ip_advantage_4">გაფართოება: ადვილად ემატება ახალი მოწყობილობები ქსელში.</span></li>
-            </ul>
-            
-            <h3 data-i18n="comparison">შედარება</h3>
-            <p data-i18n="comparison_desc">ანალოგური სისტემები უფრო შესაფერისია მცირე, ბიუჯეტური ობიექტებისთვის, სადაც საჭიროა მარტივი და საიმედო კომუნიკაცია. IP სისტემები განკუთვნილია თანამედროვე, რთული ინფრასტრუქტურისთვის, სადაც მნიშვნელოვანია მოქნილობა, მაღალი ხარისხი და ინტეგრაციის შესაძლებლობა.</p>
+            <h2 class="section-title fade-in" data-i18n="intercom_title">დომოფონის სისტემები</h2>
+            <div class="intercom-content">
+                <p class="fade-in slide-up" data-i18n="intercom_desc_1">დომოფონის სისტემები თანამედროვე უსაფრთხოების განუყოფელი ნაწილია, რომელიც უზრუნველყოფს შენობაში შესვლის კონტროლსა და უსაფრთხო კომუნიკაციას. ისინი ფართოდ გამოიყენება საცხოვრებელ კორპუსებში, ოფისებში, სკოლებში, საავადმყოფოებსა და სხვა ობიექტებში.</p>
+                <p class="fade-in slide-up" data-i18n="intercom_desc_2">ჩვენ გთავაზობთ როგორც ანალოგურ, ისე IP დომოფონის სისტემებს, რომლებიც მორგებულია თქვენს საჭიროებებზე. ჩვენი გუნდი უზრუნველყოფს სისტემის დაგეგმვას, ინსტალაციასა და ტექნიკურ მხარდაჭერას.</p>
+            </div>
         </div>
     </section>
 
-    <!-- კონტაქტი -->
-    <section class="contact" id="contact">
+    <!-- IP vs ანალოგური დომოფონი -->
+    <section class="comparison">
         <div class="container">
-            <h2 class="section-title fade-in" data-i18n="contact_title">კონტაქტი</h2>
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3 data-i18n="contact_info_title">დაგვიკავშირდით</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <span data-i18n="contact_address">მთელი საქართველოს მასშტაბით</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone contact-icon"></i>
-                        <span>+995 577 97 27 58</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone contact-icon"></i>
-                        <span>+995 595 70 83 00</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <span>camdefendersys@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock contact-icon"></i>
-                        <span data-i18n="contact_hours">ორშ-კვირა: 9:00 - 18:00</span>
-                    </div>
-                </div>
-                
-                <div class="contact-info fade-in slide-up" style="transition-delay: 0.2s;">
-                    <h3 data-i18n="contact_form_title">დატოვე შეტყობინება</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="თქვენი სახელი" data-i18n="form_name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="თქვენი ელ. ფოსტა" data-i18n="form_email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="თქვენი შეტყობინება" rows="4" data-i18n="form_message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn" data-i18n="form_submit">გაგზავნა</button>
-                    </form>
-                </div>
-            </div>
+            <h2 class="section-title fade-in" data-i18n="comparison_title">IP და ანალოგური დომოფონების შედარება</h2>
+            <table class="comparison-table fade-in slide-up">
+                <thead>
+                    <tr>
+                        <th data-i18n="comparison_feature">მახასიათებელი</th>
+                        <th data-i18n="comparison_ip">IP დომოფონი</th>
+                        <th data-i18n="comparison_analog">ანალოგური დომოფონი</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="comparison_quality">ხარისხი</td>
+                        <td data-i18n="comparison_ip_quality">მაღალი გარჩევადობის ვიდეო, ხმის სისუფთავე</td>
+                        <td data-i18n="comparison_analog_quality">სტანდარტული ხარისხის ვიდეო და ხმა</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="comparison_connectivity">დაკავშირება</td>
+                        <td data-i18n="comparison_ip_connectivity">ქსელის მეშვეობით (Wi-Fi, Ethernet), დისტანციური წვდომა</td>
+                        <td data-i18n="comparison_analog_connectivity">სადენიანი კავშირი, შეზღუდული წვდომა</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="comparison_features">ფუნქციონალი</td>
+                        <td data-i18n="comparison_ip_features">მობილური აპლიკაციის ინტეგრაცია, CCTV-სთან თავსებადობა, მრავალფუნქციური კონტროლი</td>
+                        <td data-i18n="comparison_analog_features">ძირითადი ფუნქციები (ხმოვანი/ვიდეო კომუნიკაცია)</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="comparison_cost">ღირებულება</td>
+                        <td data-i18n="comparison_ip_cost">უფრო მაღალი საწყისი ღირებულება, მაგრამ გრძელვადიანი ეკონომია</td>
+                        <td data-i18n="comparison_analog_cost">დაბალი საწყისი ღირებულება, მაგრამ შეზღუდული ფუნქციონალი</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="comparison_maintenance">მომსახურება</td>
+                        <td data-i18n="comparison_ip_maintenance">მარტივი განახლება, დისტანციური მართვა</td>
+                        <td data-i18n="comparison_analog_maintenance">საჭიროებს ფიზიკურ მომსახურებას</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA სექცია -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="section-title fade-in" data-i18n="cta_title">დაგვიკავშირდით დღესვე!</h2>
+            <p class="fade-in slide-up" data-i18n="cta_desc">ჩვენი გუნდი მზადაა, შემოგთავაზოთ თქვენთვის მორგებული დომოფონის სისტემა. დაგვიკავშირდით, რომ განვიხილოთ თქვენი საჭიროებები!</p>
+            <a href="index.html#contact" class="btn fade-in slide-up" data-i18n="cta_button">დაგვიკავშირდით</a>
         </div>
     </section>
 
@@ -656,16 +629,12 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 data-i18n="footer_company">CamDefenderSys</h3>
+                    <h3 data-i18n="footer_company">Smart Security</h3>
+                    <a href="index.html">
+                        <img src="logo.png" alt="Smart Security Logo" class="footer-logo" style="width: 100px;">
+                    </a>
                     <p data-i18n="footer_company_desc">თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
                 </div>
-                
                 <div class="footer-column">
                     <h3 data-i18n="footer_services">სერვისები</h3>
                     <ul class="footer-links">
@@ -675,14 +644,14 @@
                         <li><a href="locks.html" data-i18n="service_locks">ელექტრო საკეტები</a></li>
                         <li><a href="barriers.html" data-i18n="service_barriers">შლაგბაუმები</a></li>
                         <li><a href="turnstiles.html" data-i18n="service_turnstiles">ტურნიკეტები</a></li>
-                        <li><a href="intercommunication_device.html" data-i18n="service_intercom">ინტერკომი</a></li>
+                        <li><a href="intercom.html" data-i18n="service_intercom">ინტერკომი</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3 data-i18n="footer_links">სწრაფი ბმულები</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html" data-i18n="nav-home">მთავარი</a></li>
+                        <li><a href="index.html#home" data-i18n="nav-home">მთავარი</a></li>
                         <li><a href="index.html#services" data-i18n="nav-services">სერვისები</a></li>
                         <li><a href="index.html#about" data-i18n="nav-about">ჩვენ შესახებ</a></li>
                         <li><a href="index.html#contact" data-i18n="nav-contact">კონტაქტი</a></li>
@@ -692,7 +661,7 @@
             </div>
             
             <div class="copyright">
-                <p data-i18n="footer_copyright">© 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
+                <p data-i18n="footer_copyright">© 2023 Smart Security. ყველა უფლება დაცულია.</p>
             </div>
         </div>
     </footer>
@@ -702,180 +671,144 @@
         const translations = {
             ka: {
                 language: "ქართული",
-                page_title: "CamDefenderSys | ინტერკომის სისტემები",
+                page_title: "Smart Security | დომოფონის სისტემები",
                 "nav-home": "მთავარი",
                 "nav-services": "სერვისები",
                 "nav-about": "ჩვენ შესახებ",
                 "nav-contact": "კონტაქტი",
-                intercom_title: "ინტერკომის სისტემები",
-                intercom_slogan: "უსაფრთხო და მარტივი კომუნიკაცია თქვენი ობიექტისთვის",
-                intercom_overview: "ანალოგური და IP ინტერკომის მიმოხილვა",
-                analog_intercom: "ანალოგური ინტერკომის სისტემა",
-                analog_intercom_desc: "ანალოგური ინტერკომის სისტემა არის ტრადიციული კომუნიკაციის საშუალება, რომელიც იყენებს ანალოგურ ელექტრულ სიგნალებს ხმის ან/და ვიდეოს გადასაცემად. ეს სისტემები მოიცავს მთავარ სადგურს და სუბსადგურებს, დაკავშირებულს სპეციალური სადენებით. ხმოვანი სიგნალები გადაიცემა მუდმივი დენის ხაზზე (12-48V), ხოლო ვიდეოსთვის საჭიროა დამატებითი სადენები.",
-                analog_purpose: "დანიშნულება",
-                analog_purpose_1: "საცხოვრებელი შენობების შესასვლელთან ვიზიტორებთან კომუნიკაცია და წვდომის კონტროლი.",
-                analog_purpose_2: "ოფისებში და სკოლებში შიდა კომუნიკაციისა და უსაფრთხოების მართვა.",
-                analog_purpose_3: "სამრეწველო ობიექტებში მუშაკთა კოორდინაცია.",
-                analog_purpose_4: "ავტომობილებსა და გემებში ეკიპაჟის კომუნიკაცია.",
-                analog_advantages: "უპირატესობები",
-                analog_advantage_1: "საიმედოობა: ნაკლებად მგრძნობიარეა ქსელის გათიშვის მიმართ.",
-                analog_advantage_2: "სიმარტივე: მარტივი ინსტალაცია მცირე ობიექტებში.",
-                analog_advantage_3: "ხარჯთეფექტურობა: დაბალი საწყისი ღირებულება.",
-                analog_advantage_4: "მარტივი მოვლა: არ საჭიროებს რთულ პროგრამულ განახლებებს.",
-                ip_intercom: "IP ინტერკომის სისტემა",
-                ip_intercom_desc: "IP ინტერკომის სისტემა იყენებს ინტერნეტ პროტოკოლს (IP) ხმის, ვიდეოსა და მონაცემების გადასაცემად Ethernet-ის ან Wi-Fi ქსელის მეშვეობით. ეს სისტემები ინტეგრირდება თანამედროვე ქსელურ ინფრასტრუქტურასთან, მხარს უჭერენ მაღალი გარჩევადობის ვიდეოსა და დისტანციურ წვდომას.",
-                ip_purpose: "დანიშნულება",
-                ip_purpose_1: "მრავალსართულიანი საცხოვრებელი კომპლექსებისა და ჭკვიანი სახლების მართვა.",
-                ip_purpose_2: "კომერციული ობიექტების უსაფრთხოებისა და კომუნიკაციის ინტეგრირებული გადაწყვეტილებები.",
-                ip_purpose_3: "საავადმყოფოებსა და სასწავლო დაწესებულებებში მოქნილი კომუნიკაცია.",
-                ip_purpose_4: "დისტანციური მონიტორინგი და კონტროლი მობილური აპლიკაციების საშუალებით.",
-                ip_advantages: "უპირატესობები",
-                ip_advantage_1: "მაღალი ხარისხის ხმა და ვიდეო: HD ვიდეო და ნათელი ხმა.",
-                ip_advantage_2: "მოქნილობა: მარტივი ინტეგრაცია CCTV-სთან, წვდომის კონტროლთან და სხვა სისტემებთან.",
-                ip_advantage_3: "დისტანციური წვდომა: კონტროლი სმარტფონის ან კომპიუტერის საშუალებით.",
-                ip_advantage_4: "გაფართოება: ადვილად ემატება ახალი მოწყობილობები ქსელში.",
-                comparison: "შედარება",
-                comparison_desc: "ანალოგური სისტემები უფრო შესაფერისია მცირე, ბიუჯეტური ობიექტებისთვის, სადაც საჭიროა მარტივი და საიმედო კომუნიკაცია. IP სისტემები განკუთვნილია თანამედროვე, რთული ინფრასტრუქტურისთვის, სადაც მნიშვნელოვანია მოქნილობა, მაღალი ხარისხი და ინტეგრაციის შესაძლებლობა.",
-                contact_title: "კონტაქტი",
-                contact_info_title: "დაგვიკავშირდით",
-                contact_address: "მთელი საქართველოს მასშტაბით",
-                contact_hours: "ორშ-კვირა: 9:00 - 18:00",
-                contact_form_title: "დატოვე შეტყობინება",
-                form_name: "თქვენი სახელი",
-                form_email: "თქვენი ელ. ფოსტა",
-                form_message: "თქვენი შეტყობინება",
-                form_submit: "გაგზავნა",
-                footer_company: "CamDefenderSys",
+                intercom_title: "დომოფონის სისტემები",
+                intercom_slogan: "უსაფრთხო კომუნიკაცია და კონტროლი",
+                intercom_desc_1: "დომოფონის სისტემები თანამედროვე უსაფრთხოების განუყოფელი ნაწილია, რომელიც უზრუნველყოფს შენობაში შესვლის კონტროლსა და უსაფრთხო კომუნიკაციას. ისინი ფართოდ გამოიყენება საცხოვრებელ კორპუსებში, ოფისებში, სკოლებში, საავადმყოფოებსა და სხვა ობიექტებში.",
+                intercom_desc_2: "ჩვენ გთავაზობთ როგორც ანალოგურ, ისე IP დომოფონის სისტემებს, რომლებიც მორგებულია თქვენს საჭიროებებზე. ჩვენი გუნდი უზრუნველყოფს სისტემის დაგეგმვას, ინსტალაციასა და ტექნიკურ მხარდაჭერას.",
+                comparison_title: "IP და ანალოგური დომოფონების შედარება",
+                comparison_feature: "მახასიათებელი",
+                comparison_ip: "IP დომოფონი",
+                comparison_analog: "ანალოგური დომოფონი",
+                comparison_quality: "ხარისხი",
+                comparison_ip_quality: "მაღალი გარჩევადობის ვიდეო, ხმის სისუფთავე",
+                comparison_analog_quality: "სტანდარტული ხარისხის ვიდეო და ხმა",
+                comparison_connectivity: "დაკავშირება",
+                comparison_ip_connectivity: "ქსელის მეშვეობით (Wi-Fi, Ethernet), დისტანციური წვდომა",
+                comparison_analog_connectivity: "სადენიანი კავშირი, შეზღუდული წვდომა",
+                comparison_features: "ფუნქციონალი",
+                comparison_ip_features: "მობილური აპლიკაციის ინტეგრაცია, CCTV-სთან თავსებადობა, მრავალფუნქციური კონტროლი",
+                comparison_analog_features: "ძირითადი ფუნქციები (ხმოვანი/ვიდეო კომუნიკაცია)",
+                comparison_cost: "ღირებულება",
+                comparison_ip_cost: "უფრო მაღალი საწყისი ღირებულება, მაგრამ გრძელვადიანი ეკონომია",
+                comparison_analog_cost: "დაბალი საწყისი ღირებულება, მაგრამ შეზღუდული ფუნქციონალი",
+                comparison_maintenance: "მომსახურება",
+                comparison_ip_maintenance: "მარტივი განახლება, დისტანციური მართვა",
+                comparison_analog_maintenance: "საჭიროებს ფიზიკურ მომსახურებას",
+                cta_title: "დაგვიკავშირდით დღესვე!",
+                cta_desc: "ჩვენი გუნდი მზადაა, შემოგთავაზოთ თქვენთვის მორგებული დომოფონის სისტემა. დაგვიკავშირდით, რომ განვიხილოთ თქვენი საჭიროებები!",
+                cta_button: "დაგვიკავშირდით",
+                footer_company: "Smart Security",
                 footer_company_desc: "თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.",
                 footer_services: "სერვისები",
+                footer_links: "სწრაფი ბმულები",
+                footer_blog: "ბლოგი",
+                footer_copyright: "© 2023 Smart Security. ყველა უფლება დაცულია.",
                 service_cctv: "CCTV კამერები",
                 service_alarm: "სიგნალიზაცია",
                 service_fire: "სახანძრო სისტემები",
                 service_locks: "ელექტრო საკეტები",
                 service_barriers: "შლაგბაუმები",
                 service_turnstiles: "ტურნიკეტები",
-                service_intercom: "ინტერკომი",
-                footer_links: "სწრაფი ბმულები",
-                footer_blog: "ბლოგი",
-                footer_copyright: "© 2023 CamDefenderSys. ყველა უფლება დაცულია."
+                service_intercom: "ინტერკომი"
             },
             en: {
                 language: "English",
-                page_title: "CamDefenderSys | Intercom Systems",
+                page_title: "Smart Security | Intercom Systems",
                 "nav-home": "Home",
                 "nav-services": "Services",
                 "nav-about": "About Us",
                 "nav-contact": "Contact",
                 intercom_title: "Intercom Systems",
-                intercom_slogan: "Secure and Simple Communication for Your Property",
-                intercom_overview: "Overview of Analog and IP Intercom Systems",
-                analog_intercom: "Analog Intercom System",
-                analog_intercom_desc: "Analog intercom systems are traditional communication solutions that use analog electrical signals to transmit audio and/or video. These systems typically include a main station and substations connected via dedicated wiring. Audio signals are transmitted over a DC power line (12-48V), while video requires additional wiring.",
-                analog_purpose: "Purpose",
-                analog_purpose_1: "Communication with visitors and access control at residential building entrances.",
-                analog_purpose_2: "Internal communication and security management in offices and schools.",
-                analog_purpose_3: "Worker coordination in industrial facilities.",
-                analog_purpose_4: "Crew communication in vehicles and ships.",
-                analog_advantages: "Advantages",
-                analog_advantage_1: "Reliability: Less susceptible to network outages.",
-                analog_advantage_2: "Simplicity: Easy installation for small facilities.",
-                analog_advantage_3: "Cost-effectiveness: Low initial cost.",
-                analog_advantage_4: "Easy maintenance: No complex software updates required.",
-                ip_intercom: "IP Intercom System",
-                ip_intercom_desc: "IP intercom systems use Internet Protocol (IP) to transmit audio, video, and data over Ethernet or Wi-Fi networks. These systems integrate with modern network infrastructure, supporting high-definition video and remote access.",
-                ip_purpose: "Purpose",
-                ip_purpose_1: "Management of multi-story residential complexes and smart homes.",
-                ip_purpose_2: "Integrated security and communication solutions for commercial facilities.",
-                ip_purpose_3: "Flexible communication in hospitals and educational institutions.",
-                ip_purpose_4: "Remote monitoring and control via mobile applications.",
-                ip_advantages: "Advantages",
-                ip_advantage_1: "High-quality audio and video: HD video and clear sound.",
-                ip_advantage_2: "Flexibility: Easy integration with CCTV, access control, and other systems.",
-                ip_advantage_3: "Remote access: Control via smartphone or computer.",
-                ip_advantage_4: "Scalability: Easily add new devices to the network.",
-                comparison: "Comparison",
-                comparison_desc: "Analog systems are better suited for small, budget-conscious facilities requiring simple and reliable communication. IP systems are designed for modern, complex infrastructures where flexibility, high quality, and integration capabilities are essential.",
-                contact_title: "Contact",
-                contact_info_title: "Get in Touch",
-                contact_address: "Nationwide in Georgia",
-                contact_hours: "Mon-Sun: 9:00 - 18:00",
-                contact_form_title: "Leave a Message",
-                form_name: "Your Name",
-                form_email: "Your Email",
-                form_message: "Your Message",
-                form_submit: "Send",
-                footer_company: "CamDefenderSys",
+                intercom_slogan: "Secure Communication and Control",
+                intercom_desc_1: "Intercom systems are an integral part of modern security, providing access control and secure communication for buildings. They are widely used in residential complexes, offices, schools, hospitals, and other facilities.",
+                intercom_desc_2: "We offer both analog and IP intercom systems tailored to your needs. Our team ensures system planning, installation, and technical support.",
+                comparison_title: "IP vs Analog Intercom Comparison",
+                comparison_feature: "Feature",
+                comparison_ip: "IP Intercom",
+                comparison_analog: "Analog Intercom",
+                comparison_quality: "Quality",
+                comparison_ip_quality: "High-resolution video, clear audio",
+                comparison_analog_quality: "Standard video and audio quality",
+                comparison_connectivity: "Connectivity",
+                comparison_ip_connectivity: "Network-based (Wi-Fi, Ethernet), remote access",
+                comparison_analog_connectivity: "Wired connection, limited access",
+                comparison_features: "Functionality",
+                comparison_ip_features: "Mobile app integration, CCTV compatibility, multi-functional control",
+                comparison_analog_features: "Basic functions (voice/video communication)",
+                comparison_cost: "Cost",
+                comparison_ip_cost: "Higher initial cost, but long-term savings",
+                comparison_analog_cost: "Lower initial cost, but limited functionality",
+                comparison_maintenance: "Maintenance",
+                comparison_ip_maintenance: "Easy updates, remote management",
+                comparison_analog_maintenance: "Requires physical maintenance",
+                cta_title: "Contact Us Today!",
+                cta_desc: "Our team is ready to offer you a tailored intercom system. Contact us to discuss your needs!",
+                cta_button: "Contact Us",
+                footer_company: "Smart Security",
                 footer_company_desc: "Leading security solutions provider in Georgia.",
                 footer_services: "Services",
+                footer_links: "Quick Links",
+                footer_blog: "Blog",
+                footer_copyright: "© 2023 Smart Security. All rights reserved.",
                 service_cctv: "CCTV Cameras",
                 service_alarm: "Alarm Systems",
                 service_fire: "Fire Systems",
                 service_locks: "Electronic Locks",
                 service_barriers: "Barriers",
                 service_turnstiles: "Turnstiles",
-                service_intercom: "Intercom",
-                footer_links: "Quick Links",
-                footer_blog: "Blog",
-                footer_copyright: "© 2023 CamDefenderSys. All rights reserved."
+                service_intercom: "Intercom"
             },
             ru: {
                 language: "Русский",
-                page_title: "CamDefenderSys | Системы домофонов",
+                page_title: "Smart Security | Системы домофонов",
                 "nav-home": "Главная",
                 "nav-services": "Услуги",
                 "nav-about": "О нас",
                 "nav-contact": "Контакты",
                 intercom_title: "Системы домофонов",
-                intercom_slogan: "Безопасная и простая коммуникация для вашего объекта",
-                intercom_overview: "Обзор аналоговых и IP-домофонов",
-                analog_intercom: "Аналоговая система домофона",
-                analog_intercom_desc: "Аналоговые системы домофонов — это традиционные решения для коммуникации, использующие аналоговые электрические сигналы для передачи аудио и/или видео. Эти системы включают главную станцию и подстанции, соединенные специальными проводами. Аудиосигналы передаются по линии постоянного тока (12-48В), а для видео требуются дополнительные провода.",
-                analog_purpose: "Назначение",
-                analog_purpose_1: "Коммуникация с посетителями и контроль доступа на входах в жилые здания.",
-                analog_purpose_2: "Внутренняя коммуникация и управление безопасностью в офисах и школах.",
-                analog_purpose_3: "Координация работников на промышленных объектах.",
-                analog_purpose_4: "Коммуникация экипажа в автомобилях и на судах.",
-                analog_advantages: "Преимущества",
-                analog_advantage_1: "Надежность: Меньшая чувствительность к отключениям сети.",
-                analog_advantage_2: "Простота: Легкая установка для небольших объектов.",
-                analog_advantage_3: "Экономичность: Низкая начальная стоимость.",
-                analog_advantage_4: "Простое обслуживание: Не требует сложных программных обновлений.",
-                ip_intercom: "IP-домофонная система",
-                ip_intercom_desc: "IP-домофонные системы используют интернет-протокол (IP) для передачи аудио, видео и данных по сетям Ethernet или Wi-Fi. Эти системы интегрируются с современной сетевой инфраструктурой, поддерживая видео высокого разрешения и удаленный доступ.",
-                ip_purpose: "Назначение",
-                ip_purpose_1: "Управление многоэтажными жилыми комплексами и умными домами.",
-                ip_purpose_2: "Интегрированные решения для безопасности и коммуникации на коммерческих объектах.",
-                ip_purpose_3: "Гибкая коммуникация в больницах и учебных заведениях.",
-                ip_purpose_4: "Удаленный мониторинг и управление через мобильные приложения.",
-                ip_advantages: "Преимущества",
-                ip_advantage_1: "Высокое качество аудио и видео: HD-видео и четкий звук.",
-                ip_advantage_2: "Гибкость: Простая интеграция с системами видеонаблюдения, контроля доступа и другими.",
-                ip_advantage_3: "Удаленный доступ: Управление через смартфон или компьютер.",
-                ip_advantage_4: "Масштабируемость: Легкое добавление новых устройств в сеть.",
-                comparison: "Сравнение",
-                comparison_desc: "Аналоговые системы лучше подходят для небольших бюджетных объектов, где требуется простая и надежная коммуникация. IP-системы предназначены для современных сложных инфраструктур, где важны гибкость, высокое качество и возможности интеграции.",
-                contact_title: "Контакты",
-                contact_info_title: "Свяжитесь с нами",
-                contact_address: "По всей Грузии",
-                contact_hours: "Пн-Вс: 9:00 - 18:00",
-                contact_form_title: "Оставьте сообщение",
-                form_name: "Ваше имя",
-                form_email: "Ваш email",
-                form_message: "Ваше сообщение",
-                form_submit: "Отправить",
-                footer_company: "CamDefenderSys",
+                intercom_slogan: "Безопасная коммуникация и контроль",
+                intercom_desc_1: "Системы домофонов являются неотъемлемой частью современной безопасности, обеспечивая контроль доступа и безопасную коммуникацию в зданиях. Они широко используются в жилых комплексах, офисах, школах, больницах и других объектах.",
+                intercom_desc_2: "Мы предлагаем как аналоговые, так и IP-домофонные системы, адаптированные к вашим потребностям. Наша команда обеспечивает планирование, установку и техническую поддержку системы.",
+                comparison_title: "Сравнение IP и аналоговых домофонов",
+                comparison_feature: "Характеристика",
+                comparison_ip: "IP-домофон",
+                comparison_analog: "Аналоговый домофон",
+                comparison_quality: "Качество",
+                comparison_ip_quality: "Видео высокого разрешения, чистый звук",
+                comparison_analog_quality: "Стандартное качество видео и звука",
+                comparison_connectivity: "Подключение",
+                comparison_ip_connectivity: "Сетевое подключение (Wi-Fi, Ethernet), удаленный доступ",
+                comparison_analog_connectivity: "Проводное соединение, ограниченный доступ",
+                comparison_features: "Функциональность",
+                comparison_ip_features: "Интеграция с мобильным приложением, совместимость с CCTV, многофункциональное управление",
+                comparison_analog_features: "Базовые функции (голосовая/видеосвязь)",
+                comparison_cost: "Стоимость",
+                comparison_ip_cost: "Более высокая начальная стоимость, но долгосрочная экономия",
+                comparison_analog_cost: "Низкая начальная стоимость, но ограниченная функциональность",
+                comparison_maintenance: "Обслуживание",
+                comparison_ip_maintenance: "Простое обновление, удаленное управление",
+                comparison_analog_maintenance: "Требует физического обслуживания",
+                cta_title: "Свяжитесь с нами сегодня!",
+                cta_desc: "Наша команда готова предложить вам индивидуальную систему домофона. Свяжитесь с нами, чтобы обсудить ваши потребности!",
+                cta_button: "Свяжитесь с нами",
+                footer_company: "Smart Security",
                 footer_company_desc: "Ведущий поставщик решений безопасности в Грузии.",
                 footer_services: "Услуги",
+                footer_links: "Быстрые ссылки",
+                footer_blog: "Блог",
+                footer_copyright: "© 2023 Smart Security. Все права защищены.",
                 service_cctv: "Камеры видеонаблюдения",
                 service_alarm: "Системы сигнализации",
                 service_fire: "Пожарные системы",
                 service_locks: "Электронные замки",
                 service_barriers: "Шлагбаумы",
                 service_turnstiles: "Турникеты",
-                service_intercom: "Домофон",
-                footer_links: "Быстрые ссылки",
-                footer_blog: "Блог",
-                footer_copyright: "© 2023 CamDefenderSys. Все права защищены."
+                service_intercom: "Домофон"
             }
         };
 
@@ -974,15 +907,6 @@
                 }
             });
         });
-
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert(translations[savedLang].form_submit + ' successful!');
-                contactForm.reset();
-            });
-        }
 
         document.addEventListener('DOMContentLoaded', () => {
             const fadeElements = document.querySelectorAll('.fade-in');

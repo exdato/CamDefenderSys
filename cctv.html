@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCTV კამერები | CamDefenderSys</title>
+    <title>CCTV კამერები | Smart Security</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -32,25 +32,23 @@
 
         /* ენის შერჩევის მენიუ */
         .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
+  position: fixed; /* აქამდე absolute იყო */
+  top: 1px;
+  right: 20px;
+  z-index: 1000;
+}
 
-        .language-btn {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
+.language-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
         .language-btn:hover {
             background: white;
@@ -578,7 +576,7 @@
     <!-- ნავიგაცია -->
     <nav id="navbar">
         <div class="nav-container">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="nav-logo">
+            <img src="logo.png" alt="Smart Security Logo" class="nav-logo">
             <button class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </button>
@@ -594,7 +592,7 @@
     <!-- ჰედერი -->
     <header>
         <div class="header-content">
-            <img src="logo.png" alt="CamDefenderSys Logo" class="logo">
+            <img src="logo.png" alt="Smart Security Logo" class="logo">
             <h1 data-i18n="header-title">CCTV კამერები</h1>
             <p class="slogan" data-i18n="header-slogan">მაღალი გარჩევადობის კამერები თქვენი უსაფრთხოებისთვის</p>
         </div>
@@ -606,7 +604,7 @@
             <h2 class="section-title" data-i18n="cctv-title">CCTV სისტემების მიმოხილვა</h2>
             <div class="cctv-content">
                 <div class="cctv-text">
-                    <p data-i18n="cctv-text-1">CamDefenderSys გთავაზობთ მაღალი ხარისხის CCTV კამერების სისტემებს, რომლებიც უზრუნველყოფენ თქვენი ქონების უსაფრთხოებას 24/7. ჩვენი კამერები გამოირჩევა მაღალი გარჩევადობით, რაც საშუალებას გაძლევთ, დააკვირდეთ ყველა დეტალს, თუნდაც დაბალი განათების პირობებში.</p>
+                    <p data-i18n="cctv-text-1">Smart Security გთავაზობთ მაღალი ხარისხის CCTV კამერების სისტემებს, რომლებიც უზრუნველყოფენ თქვენი ქონების უსაფრთხოებას 24/7. ჩვენი კამერები გამოირჩევა მაღალი გარჩევადობით, რაც საშუალებას გაძლევთ, დააკვირდეთ ყველა დეტალს, თუნდაც დაბალი განათების პირობებში.</p>
                     <p data-i18n="cctv-text-2">ჩვენი სერვისები მოიცავს IP კამერებს, რომლებიც გთავაზობთ ქსელურ ინტეგრაციას და მარტივ დისტანციურ წვდომას, და მართვად PTZ (Pan-Tilt-Zoom) კამერებს, რომლებიც უზრუნველყოფენ ფართო დაფარვას და მოქნილ მართვას. ჩვენ ვქმნით მორგებულ გადაწყვეტილებებს, მათ შორის სისტემის დაპროექტებას, პროფესიონალურ ინსტალაციას, და მუდმივ ტექნიკურ მხარდაჭერას.</p>
                     <div class="cctv-features">
                         <h3 data-i18n="cctv-features-title">ჩვენი CCTV სისტემების უპირატესობები</h3>
@@ -636,19 +634,19 @@
                     <h3 data-i18n="contact-info-title">დაგვიკავშირდით</h3>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <span data-i18n="contact-address">თბილისი, ქავთარაძის ქ. #12</span>
+                        <span data-i18n="contact-address">მთელი საქართველოს მასშტაბით</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone contact-icon"></i>
-                        <span>+995 555 12 34 56</span>
+                        <span>+995 595 70 83 00</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope contact-icon"></i>
-                        <span>info@camdefendersys.ge</span>
+                        <span>info@smartsecurity.com.ge</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock contact-icon"></i>
-                        <span data-i18n="contact-hours">ორშ-კვირა: 9:00 - 18:00</span>
+                        <span data-i18n="contact_hours">ორშ-კვირა: 9:00 - 18:00</span>
                     </div>
                 </div>
                 
@@ -676,7 +674,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 data-i18n="footer-title">CamDefenderSys</h3>
+                    <h3 data-i18n="footer-title">Smart Security</h3>
                     <p data-i18n="footer-desc">თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -712,7 +710,7 @@
             </div>
             
             <div class="copyright">
-                <p data-i18n="footer-copyright">© 2023 CamDefenderSys. ყველა უფლება დაცულია.</p>
+                <p data-i18n="footer-copyright">© 2023 Smart Security. ყველა უფლება დაცულია.</p>
             </div>
         </div>
     </footer>
@@ -729,7 +727,7 @@
                 "header-title": "CCTV კამერები",
                 "header-slogan": "მაღალი გარჩევადობის კამერები თქვენი უსაფრთხოებისთვის",
                 "cctv-title": "CCTV სისტემების მიმოხილვა",
-                "cctv-text-1": "CamDefenderSys გთავაზობთ მაღალი ხარისხის CCTV კამერების სისტემებს, რომლებიც უზრუნველყოფენ თქვენი ქონების უსაფრთხოებას 24/7. ჩვენი კამერები გამოირჩევა მაღალი გარჩევადობით, რაც საშუალებას გაძლევთ, დააკვირდეთ ყველა დეტალს, თუნდაც დაბალი განათების პირობებში.",
+                "cctv-text-1": "Smart Security გთავაზობთ მაღალი ხარისხის CCTV კამერების სისტემებს, რომლებიც უზრუნველყოფენ თქვენი ქონების უსაფრთხოებას 24/7. ჩვენი კამერები გამოირჩევა მაღალი გარჩევადობით, რაც საშუალებას გაძლევთ, დააკვირდეთ ყველა დეტალს, თუნდაც დაბალი განათების პირობებში.",
                 "cctv-text-2": "ჩვენი სერვისები მოიცავს IP კამერებს, რომლებიც გთავაზობთ ქსელურ ინტეგრაციას და მარტივ დისტანციურ წვდომას, და მართვად PTZ (Pan-Tilt-Zoom) კამერებს, რომლებიც უზრუნველყოფენ ფართო დაფარვას და მოქნილ მართვას. ჩვენ ვქმნით მორგებულ გადაწყვეტილებებს, მათ შორის სისტემის დაპროექტებას, პროფესიონალურ ინსტალაციას, და მუდმივ ტექნიკურ მხარდაჭერას.",
                 "cctv-features-title": "ჩვენი CCTV სისტემების უპირატესობები",
                 "cctv-feature-1": "4K Ultra HD გარჩევადობა კრისტალურად სუფთა გამოსახულებისთვის",
@@ -740,20 +738,20 @@
                 "cctv-feature-6": "ვანდალგამძლე და ამინდისადმი მდგრადი კამერები",
                 "contact-title": "კონტაქტი",
                 "contact-info-title": "დაგვიკავშირდით",
-                "contact-address": "თბილისი, ქავთარაძის ქ. #12",
+                "contact-address": "მთელი საქართველოს მასშტაბით",
                 "contact-hours": "ორშ-კვირა: 9:00 - 18:00",
                 "contact-form-title": "დატოვე შეტყობინება",
                 "form-name": "თქვენი სახელი",
                 "form-email": "თქვენი ელ. ფოსტა",
                 "form-message": "თქვენი შეტყობინება",
                 "form-submit": "გაგზავნა",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "თქვენი უსაფრთხოების უზრუნველყოფის ლიდერი კომპანია საქართველოში.",
                 "footer-services-title": "სერვისები",
                 "footer-links-title": "სწრაფი ბმულები",
                 "footer-prices": "ფასები",
                 "footer-blog": "ბლოგი",
-                "footer-copyright": "© 2023 CamDefenderSys. ყველა უფლება დაცულია.",
+                "footer-copyright": "© 2023 Smart Security. ყველა უფლება დაცულია.",
                 "service-cctv-title": "CCTV კამერები",
                 "service-alarm-title": "სიგნალიზაცია",
                 "service-fire-title": "სახანძრო სისტემები",
@@ -770,7 +768,7 @@
                 "header-title": "CCTV Cameras",
                 "header-slogan": "High-resolution cameras for your security",
                 "cctv-title": "CCTV Systems Overview",
-                "cctv-text-1": "CamDefenderSys offers high-quality CCTV camera systems that ensure the security of your property 24/7. Our cameras feature high resolution, allowing you to monitor every detail, even in low-light conditions.",
+                "cctv-text-1": "Smart Security offers high-quality CCTV camera systems that ensure the security of your property 24/7. Our cameras feature high resolution, allowing you to monitor every detail, even in low-light conditions.",
                 "cctv-text-2": "Our services include IP cameras, which offer network integration and easy remote access, and manageable PTZ (Pan-Tilt-Zoom) cameras, which provide wide coverage and flexible control. We create tailored solutions, including system design, professional installation, and ongoing technical support.",
                 "cctv-features-title": "Advantages of Our CCTV Systems",
                 "cctv-feature-1": "4K Ultra HD resolution for crystal-clear images",
@@ -781,20 +779,17 @@
                 "cctv-feature-6": "Vandal-proof and weather-resistant cameras",
                 "contact-title": "Contact",
                 "contact-info-title": "Get in Touch",
-                "contact-address": "Tbilisi, Kavtaradze St. #12",
+                "contact-address": "Nationwide in Georgia",
                 "contact-hours": "Mon-Sun: 9:00 - 18:00",
                 "contact-form-title": "Leave a Message",
-                "form-name": "Your Name",
-                "form-email": "Your Email",
-                "form-message": "Your Message",
                 "form-submit": "Send",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "Leading security solutions provider in Georgia.",
                 "footer-services-title": "Services",
                 "footer-links-title": "Quick Links",
                 "footer-prices": "Prices",
                 "footer-blog": "Blog",
-                "footer-copyright": "© 2023 CamDefenderSys. All rights reserved.",
+                "footer-copyright": "© 2023 Smart Security. All rights reserved.",
                 "service-cctv-title": "CCTV Cameras",
                 "service-alarm-title": "Alarm Systems",
                 "service-fire-title": "Fire Systems",
@@ -811,7 +806,7 @@
                 "header-title": "Камеры видеонаблюдения",
                 "header-slogan": "Камеры высокого разрешения для вашей безопасности",
                 "cctv-title": "Обзор систем видеонаблюдения",
-                "cctv-text-1": "CamDefenderSys предлагает высококачественные системы видеонаблюдения, обеспечивающие безопасность вашего имущества 24/7. Наши камеры отличаются высоким разрешением, позволяя отслеживать каждую деталь даже в условиях низкой освещенности.",
+                "cctv-text-1": "Smart Security предлагает высококачественные системы видеонаблюдения, обеспечивающие безопасность вашего имущества 24/7. Наши камеры отличаются высоким разрешением, позволяя отслеживать каждую деталь даже в условиях низкой освещенности.",
                 "cctv-text-2": "Наши услуги включают IP-камеры, которые обеспечивают интеграцию с сетью и удобный удаленный доступ, а также управляемые PTZ-камеры (Pan-Tilt-Zoom), которые обеспечивают широкий охват и гибкое управление. Мы создаем индивидуальные решения, включая проектирование систем, профессиональную установку и постоянную техническую поддержку.",
                 "cctv-features-title": "Преимущества наших систем видеонаблюдения",
                 "cctv-feature-1": "Разрешение 4K Ultra HD для кристально чистого изображения",
@@ -822,20 +817,20 @@
                 "cctv-feature-6": "Антивандальные и погодостойкие камеры",
                 "contact-title": "Контакты",
                 "contact-info-title": "Свяжитесь с нами",
-                "contact-address": "Тбилиси, ул. Кавтарадзе, 12",
+                "contact-address": "По всей Грузии",
                 "contact-hours": "Пн-Вс: 9:00 - 18:00",
                 "contact-form-title": "Оставьте сообщение",
                 "form-name": "Ваше имя",
                 "form-email": "Ваш email",
                 "form-message": "Ваше сообщение",
                 "form-submit": "Отправить",
-                "footer-title": "CamDefenderSys",
+                "footer-title": "Smart Security",
                 "footer-desc": "Ведущий поставщик решений безопасности в Грузии.",
                 "footer-services-title": "Услуги",
                 "footer-links-title": "Быстрые ссылки",
                 "footer-prices": "Цены",
                 "footer-blog": "Блог",
-                "footer-copyright": "© 2023 CamDefenderSys. Все права защищены.",
+                "footer-copyright": "© 2023 Smart Security. Все права защищены.",
                 "service-cctv-title": "Камеры видеонаблюдения",
                 "service-alarm-title": "Сигнализация",
                 "service-fire-title": "Пожарные системы",
